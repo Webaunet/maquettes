@@ -37,9 +37,9 @@
     Object.keys(rules).forEach(function (id) { if (!check(id)) { ok = false; first = first || document.getElementById(id); } });
     if (!ok) { first.focus(); return; }
     var v = function (id) { return document.getElementById(id).value.trim(); };
-    var t = 'Demande de devis - Atmosphère Paysage\nNom : ' + v('nom') + '\nTéléphone : ' + v('tel') + '\nCommune : ' + v('commune') + '\nBesoin : ' + v('besoin') + (v('message') ? '\nMessage : ' + v('message') : '');
+    var t = 'Demande de devis - Borval Paysage\nNom : ' + v('nom') + '\nTéléphone : ' + v('tel') + '\nCommune : ' + v('commune') + '\nBesoin : ' + v('besoin') + (v('message') ? '\nMessage : ' + v('message') : '');
     recap.textContent = t;
-    document.getElementById('sms').href = 'sms:0669718436?&body=' + encodeURIComponent(t);
+    document.getElementById('sms').href = 'sms:+33660683711?&body=' + encodeURIComponent(t);
     f.hidden = true; sum.hidden = false; sum.focus();
   });
   document.getElementById('copy').addEventListener('click', function () {
