@@ -436,3 +436,5 @@ main>.section:last-child{padding-bottom:var(--sp)}
 @media(max-width:899px){.sm3-pic{display:none}.sm3 .hv-lead{display:none}.sm3-list{margin-top:14px}.sm3-list li{padding:12px 0}}
 @media(max-width:759px){.sv1-grid{gap:12px;margin-top:20px}.sv1-card{flex-direction:row}.sv1-card figure{flex:0 0 36%;aspect-ratio:auto}.sv1-card div{padding:12px 16px}}
 @media(max-width:620px){.sv1-card p{display:none}.sv1 .hv-lead{display:none}.hf3 .hf-c{display:none}.hf3 .hf-logo img{height:44px}.hf3{padding:14px 0 6px}}
+.section.contact-hero,.page-hero.contact-hero{min-height:0}
+@media(max-width:820px){.hf3 .hf-c{display:none}}
