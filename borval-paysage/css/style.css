@@ -438,3 +438,14 @@ main>.section:last-child{padding-bottom:var(--sp)}
 @media(max-width:620px){.sv1-card p{display:none}.sv1 .hv-lead{display:none}.hf3 .hf-c{display:none}.hf3 .hf-logo img{height:44px}.hf3{padding:14px 0 6px}}
 .section.contact-hero,.page-hero.contact-hero{min-height:0}
 @media(max-width:820px){.hf3 .hf-c{display:none}}
+.contact-hero{padding-bottom:12px !important}
+.contact-hero .lead{margin-bottom:0}
+.sk8{padding-top:clamp(16px,3vw,36px)}
+.sk8 .sk-side ul{gap:14px 20px;padding:0;list-style:none}
+.sk-ct{display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border-radius:999px;padding:10px 26px 10px 12px;box-shadow:0 10px 24px -16px rgba(34,38,23,.5)}
+.sk-ct>svg{flex:none;width:44px;height:44px;padding:11px;border-radius:50%;background:var(--hv-main);color:#fff}
+.sk-ct span{display:block;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hv-mu);font-weight:700}
+.sk-ct a{font:var(--hv-fw) 1.5rem var(--hv-fh);text-decoration:none;color:var(--hv-main);display:inline-flex;align-items:center;min-height:44px}
+.sk-ct p{font-weight:700;line-height:1.35}
+@media(max-width:620px){.sk-ct{border-radius:22px;width:100%}}
+.sk8 .sk-side{padding-top:22px}
