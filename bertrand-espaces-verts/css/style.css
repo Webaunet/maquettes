@@ -304,3 +304,4 @@ h3{font-size:1.5rem}
 @media(max-width:699px){.s-creation .sec-head .lead{display:none}.mini{gap:12px;margin-top:14px}.mini article{display:flex}.mini article img{width:38%;aspect-ratio:auto;height:auto;flex:none}.mini div{display:flex;align-items:center}}
 @media(max-width:699px){.sv2 .hv-lead,.c-main .info .lead{display:none}.c-main{padding-top:36px}.c-main .field{margin-bottom:12px}.c-main .form-card{padding:20px}}
 @media(min-width:900px){.hv3-strip .hv-wrap{max-height:430px}}
+@media(max-width:799px){.hf1 .hv-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 18px}.hf1{padding:14px 0 10px}.hf1 .hf-cop{width:100%;padding-top:8px;margin-top:2px}}
