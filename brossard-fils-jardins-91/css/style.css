@@ -9,8 +9,8 @@
   --shutter: #6b4a4a;
   --shutter-tint: #eddede;
   --limestone: #f8f1f1;
-  --tile: #c32222;
-  --tile-dark: #9c1b1b;
+  --tile: #8E1717;
+  --tile-dark: #6f1111;
   --sun: #8ee6a6;
   --ink: #261717;
   --muted: #564343;
@@ -472,7 +472,7 @@ body.lb-open { overflow: hidden; }
 .hv-btn-s{background:transparent;color:var(--hv-main);border-color:var(--hv-main)}
 .hv-dark .hv-btn-s{color:#fff;border-color:#fff}
 .hv img,.sv img,.hf img{display:block;width:100%;height:100%;object-fit:cover}
-:root{--hv-bg:#f8f1f1;--hv-bg2:#eddede;--hv-ink:#261717;--hv-mu:#564343;--hv-main:#c32222;--hv-acc:#2dd256;--hv-acc-ink:#141414;--hv-fh:'Outfit',serif;--hv-fb:'Outfit',sans-serif;--hv-fw:500;--hv-r:22px}
+:root{--hv-bg:#f8f1f1;--hv-bg2:#eddede;--hv-ink:#261717;--hv-mu:#564343;--hv-main:#8E1717;--hv-acc:#2dd256;--hv-acc-ink:#141414;--hv-fh:'Outfit',serif;--hv-fb:'Outfit',sans-serif;--hv-fw:500;--hv-r:22px}
 
 .hf-logo{display:inline-flex;align-items:center;min-height:44px}
 .hf-logo img{height:48px;width:auto}
