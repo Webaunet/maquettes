@@ -6,7 +6,7 @@ const root=path.resolve(process.argv[2]||'.');
 const pages=(process.argv[3]?process.argv[3].split(','):fs.readdirSync(root).filter(f=>/\.html$/.test(f)&&!/^[A-Z]\d?\./.test(f)));
 const MIME={html:'text/html',css:'text/css',js:'text/javascript',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',webp:'image/webp',svg:'image/svg+xml',ico:'image/x-icon'};
 const srv=http.createServer((q,s)=>{let p=path.join(root,decodeURIComponent(q.url.split('?')[0]));if(p.endsWith('/'))p+='index.html';try{s.setHeader('content-type',MIME[p.split('.').pop().toLowerCase()]||'application/octet-stream');s.end(fs.readFileSync(p))}catch(e){s.statusCode=404;s.end()}});
-const WS=[[360,740],[390,844],[414,860],[768,1024],[821,900],[980,900],[981,900],[1280,800],[1920,1000]];
+const WS=[[360,740],[390,844],[414,860],[768,1024],[821,900],[1259,900],[1260,900],[1280,800],[1920,1000]];
 (async()=>{await new Promise(r=>srv.listen(0,r));const base='http://localhost:'+srv.address().port+'/';
 const b=await chromium.launch();const out=[];
 for(const p of pages){
@@ -24,8 +24,8 @@ for(const p of pages){
     if(e.tagName==='IMG'){if(!e.complete||!e.naturalWidth)R.push('image cassée '+e.getAttribute('src'));else{const bb=e.getBoundingClientRect();if(bb.width>e.naturalWidth+1)R.push('image agrandie '+e.getAttribute('src'));if(!e.hasAttribute('alt'))R.push('alt manquant '+e.getAttribute('src'))}}});
    document.querySelectorAll('main>section,body>section,.hv,.sv').forEach(s=>{if(s.closest('.sv>*,.hv>*'))return;const hh=s.getBoundingClientRect().height;if(hh>vh*1.2+2)R.push('hauteur '+(s.id||s.className)+' '+Math.round(hh/vh*100)+'%')});
    const ft=document.querySelector('footer');if(ft&&innerWidth<=820){const f=ft.getBoundingClientRect().height/vh;if(f>.3)R.push('pied de page '+Math.round(f*100)+'%')}
-   const bg=document.querySelector('.burger,[class*=burger],.menu-toggle,button[aria-controls]');if(bg){const bv=getComputedStyle(bg).display!=='none';if(innerWidth<=980&&!bv)R.push('burger absent');if(innerWidth>=981&&bv)R.push('burger présent')}
-   if(innerWidth>=981){const lg=document.querySelector('header .logo,header a[class*=logo],header .brand'),nv=document.querySelector('header nav'),cl=document.querySelector('header .head-call,header .call,header a[href^=tel]');
+   const bg=document.querySelector('.burger,[class*=burger],.menu-toggle,button[aria-controls]');if(bg){const bv=getComputedStyle(bg).display!=='none';if(innerWidth<=1259&&!bv)R.push('burger absent');if(innerWidth>=1260&&bv)R.push('burger présent')}
+   if(innerWidth>=1260){const lg=document.querySelector('header .logo,header a[class*=logo],header .brand'),nv=document.querySelector('header nav'),cl=document.querySelector('header .head-call,header .call,header > div > a[href^=tel]');
     if(lg&&nv){const a=lg.getBoundingClientRect(),n=nv.getBoundingClientRect();if(a.right>n.left+1)R.push('logo chevauche menu');if(cl){const c=cl.getBoundingClientRect();if(n.right>c.left+1)R.push('menu chevauche bouton appel')}}}
    return R});
   if(miss.length)r.push('404/JS '+[...new Set(miss)].join(','));
