@@ -18,6 +18,14 @@ input,select,textarea,button{font-family:Figtree,sans-serif}
 .burger{display:none}
 html{scroll-behavior:smooth}
 body{overflow-x:hidden}
+header{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 #e8e0d2,0 8px 24px rgba(20,39,74,.05)}
+.tel{display:none;color:#14274a;text-decoration:none;font-weight:700;font-size:16px;padding:14px 0;white-space:nowrap}
+@media (min-width:1180px){.tel{display:inline-block}}
+a[style*="background: #0b4fc4"]{transition:background .15s,transform .15s}
+a[style*="background: #0b4fc4"]:hover{background:#08389a!important;color:#fff!important;transform:translateY(-1px)}
+article,[style*="border-radius: 18px"]{transition:box-shadow .2s}
+.mbar{display:none}
+h1,h2{text-wrap:balance}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #e0a874;outline-offset:2px}
 img{max-width:100%}
 footer a{display:inline-block;padding:13px 0}
@@ -27,6 +35,9 @@ header nav.open{display:flex!important}
 header nav a{padding:14px 0!important}
 header nav a:last-child{text-align:center;margin-top:8px}
 .burger{display:flex!important}
+header>div>a:first-child{flex:1 1 0;min-width:0}
+header>div{flex-wrap:wrap;gap:12px 12px!important}
+header nav .tel{display:block;padding:14px 0}
 }
 @media (max-width:700px){
 header>div,section>div,footer>div{padding-left:16px!important;padding-right:16px!important}
@@ -35,6 +46,13 @@ h2{font-size:28px!important}
 [style*="left: -28px"]{left:8px!important}
 footer>div{padding-top:8px!important;padding-bottom:8px!important;gap:0 16px!important}
 footer>div>div>span{display:none}
+body{padding-bottom:84px}
+section a[style*="background: #0b4fc4"],section button[type=submit]{align-self:stretch!important;text-align:center;box-sizing:border-box}
+header>div>a:first-child>span:last-child{font-size:16px!important;line-height:1.3}
+.mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #e8e0d2;box-shadow:0 -8px 24px rgba(20,39,74,.1)}
+.mbar a{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:17px;padding:15px 8px;border-radius:10px;min-height:48px;box-sizing:border-box}
+.mbar a:first-child{border:2px solid #0b4fc4;color:#0b4fc4}
+.mbar a:last-child{background:#0b4fc4;color:#fff}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -53,7 +71,7 @@ footer>div>div>span{display:none}
 <a href="mon-secteur.html" style="color: #14274a; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 0">Mon secteur</a>
 <a href="mes-biens.html" style="color: #14274a; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 0">Mes biens</a>
 <a href="a-propos-contact.html" aria-current="page" style="color: #14274a; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 0; box-shadow: inset 0 -3px 0 #b66a2c">À propos / Contact</a>
-<a href="faire-estimer-mon-bien.html" style="background: #0b4fc4; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 10px">Faire estimer mon bien</a>
+<a class="tel" href="tel:+33768912506">07 68 91 25 06</a><a href="faire-estimer-mon-bien.html" style="background: #0b4fc4; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; padding: 14px 24px; border-radius: 10px">Faire estimer mon bien</a>
 </nav>
 </div>
 </header>
@@ -126,6 +144,7 @@ footer>div>div>span{display:none}
 </footer>
 
 </div>
+<div class="mbar"><a href="tel:+33768912506">Appeler</a><a href="faire-estimer-mon-bien.html">Estimer mon bien</a></div>
 <script>
 (function(){
 var b=document.querySelector('.burger'),n=document.getElementById('menu');
