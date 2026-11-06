@@ -139,7 +139,7 @@ a{color:inherit}
 .sv-body li{padding-left:28px;position:relative}
 .sv-body li::before{content:"";position:absolute;left:0;top:.8em;width:14px;height:3px;background:var(--corail)}
 .sv-body li b{display:block}
-@media(min-width:981px){.sv{grid-template-columns:.8fr 1.4fr;gap:56px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}}
+@media(min-width:700px){.sv{grid-template-columns:.8fr 1.4fr;gap:40px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}}
 .flux{display:grid;margin-top:26px}
 .tier{background:var(--nuit);color:#fff;border-radius:var(--r);padding:18px 20px}
 .tier .kicker{color:var(--ambre);margin-bottom:8px}
