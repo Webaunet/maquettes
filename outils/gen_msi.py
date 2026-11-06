@@ -81,9 +81,10 @@ a{color:inherit}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:22px 0 0;padding:0}
 .tags li{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 14px;font-weight:700}
-.hero-art{width:100%;height:auto;max-height:230px}
+.ph{display:block;width:100%;height:auto;border-radius:var(--r)}
+.hero .ph{box-shadow:0 18px 40px rgba(0,0,0,.45)}
 .waves{display:block;width:100%;height:clamp(40px,7vw,90px);margin-top:8px}
-@media(min-width:981px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}.hero-art{max-height:none}}
+@media(min-width:981px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:48px}}
 .svc-list{list-style:none;margin:28px 0 0;padding:0;border-top:2px solid var(--nuit)}
 .svc-row{display:grid;grid-template-columns:60px 1fr;grid-template-areas:"ico t" "ico d";gap:2px 18px;padding:20px 0;border-bottom:1px solid rgba(11,37,64,.25)}
 .svc-num{display:none;grid-area:num;font:700 2.8rem/1 'Fraunces',serif;color:var(--corail)}
@@ -133,13 +134,12 @@ a{color:inherit}
 .val p{margin:0;color:var(--muted)}
 @media(min-width:700px){.vals{grid-template-columns:repeat(3,1fr)}}
 .sv{display:grid;gap:20px;align-items:stretch}
-.sv-ico{background:var(--nuit);border-radius:var(--r);position:relative;overflow:hidden;min-height:150px}
-.sv-ico svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.sv-ico{align-self:center}
 .sv-body ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
 .sv-body li{padding-left:28px;position:relative}
 .sv-body li::before{content:"";position:absolute;left:0;top:.8em;width:14px;height:3px;background:var(--corail)}
 .sv-body li b{display:block}
-@media(min-width:981px){.sv{grid-template-columns:.8fr 1.4fr;gap:56px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}.sv-ico{min-height:340px}}
+@media(min-width:981px){.sv{grid-template-columns:.8fr 1.4fr;gap:56px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}}
 .flux{display:grid;margin-top:26px}
 .tier{background:var(--nuit);color:#fff;border-radius:var(--r);padding:18px 20px}
 .tier .kicker{color:var(--ambre);margin-bottom:8px}
@@ -252,38 +252,13 @@ SHIP = ico('<path d="M6 40h52l-7 14H13z" fill="currentColor" fill-opacity=".28"/
 TRUCK = ico('<path d="M4 18h34v28H4z" fill="currentColor" fill-opacity=".28"/><path d="M38 28h12l10 10v8H38z" fill="currentColor" fill-opacity=".28"/><path d="M42 32h7l5 6H42z"/><circle cx="17" cy="48" r="5" fill="#14161A"/><circle cx="49" cy="48" r="5" fill="#14161A"/><path d="M2 58h60" stroke-opacity=".5" stroke-dasharray="6 5"/>')
 BOX = ico('<path d="M8 26l24-12 24 12-24 12z" fill="currentColor" fill-opacity=".4"/><path d="M8 26v20l24 12V38z" fill="currentColor" fill-opacity=".15"/><path d="M56 26v20L32 58V38z" fill="currentColor" fill-opacity=".28"/><path d="M20 20l24 12"/>')
 
-def ship_g(tf):
-    return ('<g transform="' + tf + '"><path d="M10 74L-34 102 22 106Z" fill="#FF5A5F"/><path d="M0 70H250L230 106H22Z" fill="#F6F3F1"/><path d="M8 88H242L230 106H22Z" fill="#C8161D"/>'
-            '<rect x="10" y="26" width="190" height="44" rx="3" fill="#2F343C"/><path d="M22 42H190M22 56H190" stroke="#9AA3B0" stroke-width="5" stroke-dasharray="12 8"/>'
-            '<rect x="200" y="6" width="44" height="64" rx="3" fill="#F6F3F1"/><path d="M208 20h28M208 34h28" stroke="#14161A" stroke-width="6" stroke-linecap="round"/>'
-            '<rect x="214" y="-12" width="16" height="20" fill="#C8161D"/><rect x="214" y="-5" width="16" height="4" fill="#F6F3F1"/>'
-            '<path d="M-50 114q15-8 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0" fill="none" stroke="#F6F3F1" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></g>')
-
-def scene(n, inner):
-    return ('<svg class="scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gs' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2F37"/><stop offset="1" stop-color="#14161A"/></linearGradient></defs>'
-            '<rect width="400" height="300" fill="url(#gs' + n + ')"/><circle cx="200" cy="150" r="120" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="22"/>'
-            '<path d="M-10 190C120 180 280 110 410 40C290 140 120 205 -10 190Z" fill="#FF5A5F" fill-opacity=".85"/>' + inner + '</svg>')
-
-def cont(x, y, f):
-    return ('<rect x="%d" y="%d" width="64" height="30" rx="2" fill="%s"/><path d="M%d %dv22M%d %dv22M%d %dv22M%d %dv22" stroke="#000" stroke-opacity=".22" stroke-width="3"/>'
-            % (x, y, f, x + 12, y + 4, x + 24, y + 4, x + 40, y + 4, x + 52, y + 4))
-
-SCENE_SHIP = scene('1', '<path d="M0 252C60 240 120 264 200 252S340 240 400 254V300H0Z" fill="#2B3038"/>' + ship_g('translate(72 128)') + '<path d="M0 268C70 258 130 280 210 268S340 258 400 270V300H0Z" fill="#1B1E23"/>')
-SCENE_TRUCK = scene('2', '<path d="M0 205L70 145 130 195 200 125 280 200 340 155 400 205V232H0Z" fill="#232830"/><rect y="228" width="400" height="72" fill="#1B1E23"/><path d="M0 228H400" stroke="#3A3F48" stroke-width="3"/><path d="M0 268H400" stroke="#F6F3F1" stroke-opacity=".5" stroke-width="3" stroke-dasharray="20 14"/>'
-    '<g transform="translate(52 112)"><rect width="200" height="100" rx="8" fill="#F6F3F1"/><rect y="62" width="200" height="14" fill="#C8161D"/><path d="M208 28H262L292 64V104H208Z" fill="#C8161D"/><path d="M218 38H256L274 62H218Z" fill="#14161A"/><rect y="100" width="292" height="10" fill="#3A3F48"/>'
-    '<g fill="#14161A" stroke="#F6F3F1" stroke-width="5"><circle cx="40" cy="112" r="20"/><circle cx="84" cy="112" r="20"/><circle cx="244" cy="112" r="20"/></g><g fill="#F6F3F1"><circle cx="40" cy="112" r="6"/><circle cx="84" cy="112" r="6"/><circle cx="244" cy="112" r="6"/></g></g>')
-SCENE_LOG = scene('3', '<rect y="236" width="400" height="64" fill="#1B1E23"/><path d="M0 236H400" stroke="#3A3F48" stroke-width="3"/>'
-    + cont(40, 206, '#C8161D') + cont(106, 206, '#F6F3F1') + cont(172, 206, '#4A515C') + cont(73, 174, '#F6F3F1') + cont(139, 174, '#C8161D') + cont(106, 142, '#4A515C')
-    + '<rect x="296" y="70" width="10" height="166" fill="#F6F3F1"/><rect x="330" y="70" width="10" height="166" fill="#F6F3F1"/><rect x="150" y="64" width="210" height="10" fill="#F6F3F1"/><path d="M150 74L318 70" stroke="#FF5A5F" stroke-width="4"/>'
-    '<path d="M238 74V112M262 74V112" stroke="#F6F3F1" stroke-width="2"/><rect x="222" y="112" width="56" height="26" rx="2" fill="#FF5A5F"/>')
-
-HERO_ART = ('<svg class="hero-art" viewBox="0 0 600 340" role="img" aria-label="Illustration stylisée d\'un navire Ro-Ro sur la Méditerranée, entre deux rives"><defs><radialGradient id="lueur" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF5A5F" stop-opacity=".55"/><stop offset="1" stop-color="#FF5A5F" stop-opacity="0"/></radialGradient></defs>'
-    '<circle cx="400" cy="175" r="150" fill="url(#lueur)"/><circle cx="300" cy="165" r="140" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="22"/>'
-    '<path d="M8 262C170 240 400 150 568 24C420 156 190 236 8 262Z" fill="#FF5A5F"/>'
-    '<path d="M40 100Q300 -30 560 100" fill="none" stroke="#F6F3F1" stroke-opacity=".6" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>'
-    '<g fill="#FF5A5F"><circle cx="40" cy="100" r="8"/><circle cx="560" cy="100" r="8"/></g><g fill="none" stroke="#FF5A5F" stroke-opacity=".5" stroke-width="3"><circle cx="40" cy="100" r="16"/><circle cx="560" cy="100" r="16"/></g>'
-    + ship_g('translate(138 148) scale(1.1)') +
-    '<path d="M0 286C100 272 200 300 300 286S500 272 600 288" fill="none" stroke="#F6F3F1" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/><path d="M0 306C110 294 210 318 310 306S500 294 600 308" fill="none" stroke="#FF5A5F" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></svg>')
+def photo(f, w, h, alt, lazy=True):
+    return '<img class="ph" src="' + f + '" width="' + str(w) + '" height="' + str(h) + '" alt="' + alt + '"' + (' loading="lazy"' if lazy else '') + '>'
+HERO_IMG = photo('hero-roro.jpg', 1376, 768, 'Navire Ro-Ro à quai, rampe arrière abaissée, dans un port méditerranéen au coucher du soleil', False)
+PH_RORO = photo('service-roro.jpg', 1264, 848, 'Camions et véhicules embarquant par la rampe d\'un navire Ro-Ro dans un port')
+PH_ROUTIER = photo('service-routier.jpg', 1264, 848, 'Camion blanc avec semi-remorque sur une route côtière méditerranéenne')
+PH_LOG = photo('service-logistique.jpg', 1264, 848, 'Piles de conteneurs et portique sur un terminal portuaire')
+PH_PORT = photo('port-presentation.jpg', 1376, 768, 'Port de commerce méditerranéen avec navire de charge à quai et grues portuaires')
 
 WAVES = '<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#C8161D" d="M0 30C240 0 480 70 720 30S1200 0 1440 40V90H0Z"/><path fill="#F6F3F1" d="M0 50C240 90 480 10 720 50S1200 90 1440 40V90H0Z"/></svg>'
 
@@ -324,7 +299,7 @@ home = ('<section class="hero dark"><div class="wrap hero-grid"><div><span class
  '<h1>Vos marchandises, de l\'Europe à l\'Afrique du Nord</h1>'
  '<p class="lede">MSI organise le transport de vos marchandises par mer et par route entre la France, l\'Espagne, l\'Italie, le Maroc et l\'Algérie.</p>'
  '<div class="hero-ctas"><a class="btn btn-ghost" href="' + TEL_HREF + '">Appeler</a><a class="btn btn-primary" href="contact.html#devis">Demander un devis</a></div>'
- '<ul class="tags"><li>Maritime Ro-Ro</li><li>Routier</li><li>Logistique</li></ul></div>' + HERO_ART + '</div>' + WAVES + '</section>\n'
+ '<ul class="tags"><li>Maritime Ro-Ro</li><li>Routier</li><li>Logistique</li></ul></div>' + HERO_IMG + '</div>' + WAVES + '</section>\n'
  '<section class="sec" id="services"><div class="wrap"><span class="kicker">Nos services</span><h2>Trois savoir-faire, un même objectif</h2>'
  '<ul class="svc-list">'
  + row('01', SHIP, 'Transport maritime Ro-Ro', 'Véhicules et marchandises roulantes embarqués par rampe.')
@@ -351,7 +326,7 @@ pres = (head('Une société née pour relier les deux rives', 'MSI – Méditerr
  + '<section class="sec"><div class="wrap split"><div><span class="kicker">Historique</span><h2>Créée en 2024, installée à Paris</h2>'
  '<p>MSI est une société par actions simplifiée unipersonnelle (SASU). Elle a été créée en 2024 et son siège est à Paris.</p><p>Son objet : l\'affrètement et l\'organisation de transports maritimes, terrestres et aériens, avec un point d\'ancrage sur les liaisons Europe – Afrique du Nord.</p></div>'
  '<dl class="facts"><div><dt>Forme</dt><dd>SASU</dd></div><div><dt>Création</dt><dd>2024</dd></div><div><dt>Siège</dt><dd>Paris</dd></div><div><dt>Activité</dt><dd>Transport de marchandises par route et par mer</dd></div></dl></div></section>\n'
- '<section class="sec dark2"><div class="wrap"><span class="kicker">Mission</span><p class="big">Relier l\'Europe et l\'Afrique du Nord par des solutions de transport maritime et routier, organisées pour répondre aux besoins de chaque client.</p></div></section>\n'
+ '<section class="sec dark2"><div class="wrap split"><div><span class="kicker">Mission</span><p class="big">Relier l\'Europe et l\'Afrique du Nord par des solutions de transport maritime et routier, organisées pour répondre aux besoins de chaque client.</p></div>' + PH_PORT + '</div></section>\n'
  '<section class="sec"><div class="wrap"><span class="kicker">Valeurs</span><h2>Ce qui guide notre façon de travailler</h2><div class="vals">'
  '<div class="val reveal"><h3>Fiabilité</h3><p>Tenir ses engagements et organiser chaque transport avec rigueur.</p></div>'
  '<div class="val reveal"><h3>Transparence</h3><p>Une information claire, des échanges directs et sans ambiguïté.</p></div>'
@@ -367,12 +342,12 @@ page('presentation.html', 'Présentation – MSI, transport Europe – Afrique d
 # ---------- Services
 def sv(n, i, t, intro, items, alt=False, rev=False):
     li = ''.join('<li>' + x + '</li>' for x in items)
-    return ('<section class="sec' + (' alt' if alt else '') + '"><div class="wrap sv' + (' rev' if rev else '') + '"><div class="sv-ico" aria-hidden="true">' + i + '</div>'
+    return ('<section class="sec' + (' alt' if alt else '') + '"><div class="wrap sv' + (' rev' if rev else '') + '"><div class="sv-ico">' + i + '</div>'
             '<div class="sv-body"><span class="kicker">Service ' + n + '</span><h2>' + t + '</h2><p>' + intro + '</p><ul>' + li + '</ul></div></div></section>\n')
 serv = (head('Nos services', 'Trois services pour organiser le transport de vos marchandises entre l\'Europe et l\'Afrique du Nord.')
- + sv('01', SCENE_SHIP,'Transport maritime Ro-Ro', 'Véhicules et marchandises roulantes embarqués par rampe.', ['<b>Véhicules et marchandises roulantes</b>Embarquement par rampe.', '<b>Ports et hubs de référence</b>Tanger Med, Casablanca, Sète.'])
- + sv('02', SCENE_TRUCK,'Transport routier', 'Fret par camion en Europe et en Afrique du Nord.', ['<b>Europe</b>France, Espagne, Italie.', '<b>Afrique du Nord</b>Maroc, Algérie.'], True, True)
- + sv('03', SCENE_LOG,'Solutions logistiques', 'Les services qui accompagnent le transport.', ['<b>Affrètement</b>Moyens de transport adaptés au besoin.', '<b>Commission de transport</b>Organisation du transport pour le compte du client.', '<b>Dédouanement</b>Accompagnement dans les formalités douanières.', '<b>Stockage</b>Entreposage avant ou après transport.'])
+ + sv('01', PH_RORO,'Transport maritime Ro-Ro', 'Véhicules et marchandises roulantes embarqués par rampe.', ['<b>Véhicules et marchandises roulantes</b>Embarquement par rampe.', '<b>Ports et hubs de référence</b>Tanger Med, Casablanca, Sète.'])
+ + sv('02', PH_ROUTIER,'Transport routier', 'Fret par camion en Europe et en Afrique du Nord.', ['<b>Europe</b>France, Espagne, Italie.', '<b>Afrique du Nord</b>Maroc, Algérie.'], True, True)
+ + sv('03', PH_LOG,'Solutions logistiques', 'Les services qui accompagnent le transport.', ['<b>Affrètement</b>Moyens de transport adaptés au besoin.', '<b>Commission de transport</b>Organisation du transport pour le compte du client.', '<b>Dédouanement</b>Accompagnement dans les formalités douanières.', '<b>Stockage</b>Entreposage avant ou après transport.'])
  + cta())
 page('services.html', 'Services – Transport maritime Ro-Ro, routier, logistique | MSI', 'Transport maritime Ro-Ro, transport routier et solutions logistiques (affrètement, commission de transport, dédouanement, stockage) avec MSI.', serv)
 
