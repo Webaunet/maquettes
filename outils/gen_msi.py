@@ -167,6 +167,7 @@ a{color:inherit}
 @media(min-width:700px){.coord{grid-template-columns:repeat(3,1fr)}}
 .tbd{color:var(--muted);font-style:italic}
 .devis{display:grid;gap:16px;align-items:start}
+.devis-side h2{font-size:clamp(1.7rem,2.6vw,2.2rem)}
 .devis-side p{color:var(--muted);margin:0}
 .steps-mini{display:none;list-style:none;margin:20px 0 0;padding:0;counter-reset:m}
 .steps-mini li{counter-increment:m;position:relative;padding:12px 0 12px 46px;border-top:1px solid rgba(255,255,255,.18)}
@@ -400,7 +401,7 @@ con = (head('Parlons de votre transport', 'Décrivez votre besoin : nous prépar
  + '<section class="sec" id="coordonnees"><div class="wrap"><h2>Coordonnées à renseigner</h2>'
  '<dl class="coord"><div><dt>Adresse</dt><dd class="tbd">À renseigner</dd></div><div><dt>Téléphone</dt><dd class="tbd">À renseigner</dd></div><div><dt>E-mail</dt><dd class="tbd">À renseigner</dd></div></dl>'
  '<div class="plan">Plan à ajouter</div></div></section>\n'
- '<section class="sec alt" id="devis"><div class="wrap devis"><div class="devis-side"><h2>Demander un devis</h2><p>Décrivez votre trajet et vos marchandises.</p><ul class="steps-mini"><li>Remplissez le formulaire</li><li>Copiez le message ou envoyez-le</li><li>Rien n\'est transmis automatiquement</li></ul></div><div class="form-card">\n'
+ '<section class="sec alt" id="devis"><div class="wrap devis"><div class="devis-side"><h2>Demander un devis</h2><p>Quelques lignes suffisent pour étudier votre demande.</p><ul class="steps-mini"><li>Décrivez votre trajet et vos marchandises</li><li>Envoyez-nous votre message</li><li>Nous revenons vers vous avec une proposition</li></ul></div><div class="form-card">\n'
  '<!-- À COMPLÉTER : renseignez les attributs data-email (votre adresse e-mail), data-sms (numéro mobile, format international) et data-tel (numéro de téléphone) du formulaire ci-dessous.\n'
  '     Les boutons « Envoyer par e-mail », « SMS » et « Appeler » n\'apparaissent après l\'envoi que si l\'attribut correspondant est renseigné. Laissés vides, seul « Copier » est proposé. -->\n'
  '<form class="form" id="devis-form" novalidate data-email="" data-sms="" data-tel="">'

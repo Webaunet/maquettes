@@ -157,6 +157,7 @@ a{color:inherit}
 @media(min-width:700px){.coord{grid-template-columns:repeat(3,1fr)}}
 .tbd{color:var(--muted);font-style:italic}
 .devis{display:grid;gap:16px;align-items:start}
+.devis-side h2{font-size:clamp(1.7rem,2.6vw,2.2rem)}
 .devis-side p{color:var(--muted);margin:0}
 .steps-mini{display:none;list-style:none;margin:20px 0 0;padding:0;counter-reset:m}
 .steps-mini li{counter-increment:m;position:relative;padding:12px 0 12px 46px;border-top:1px solid rgba(255,255,255,.18)}
