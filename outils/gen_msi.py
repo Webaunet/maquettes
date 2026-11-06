@@ -38,8 +38,11 @@ a{color:inherit}
 .site-header{position:sticky;top:0;z-index:50;background:#fff;color:var(--ink);border-bottom:1px solid #E4DEDA}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:80px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:48px;color:var(--ink)}
-.logo img{height:64px;width:auto;flex:none}
-.logo small{display:none;font-size:1rem;color:var(--muted);line-height:1.2;max-width:16ch;font-weight:600}
+.logo img{height:64px;width:auto;flex:none;transition:transform .25s}
+.logo:hover img{transform:scale(1.04)}
+.logo small{display:none;flex-direction:column;gap:3px;padding-left:16px;border-left:1px solid #DDD6D0;font-size:1rem;line-height:1.15;color:var(--ink)}
+.logo small b{font:700 1.15rem/1.1 'Fraunces',serif}
+.logo small span{font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rouge)}
 .site-header .btn-ghost{color:var(--nuit);border-color:var(--nuit)}
 .site-header .btn-ghost:hover{background:rgba(0,0,0,.06)}
 .burger{width:48px;height:48px;border:0;border-radius:12px;background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
@@ -65,7 +68,7 @@ a{color:inherit}
 .head-ctas{display:flex;gap:10px}
 .head-ctas .btn{min-height:44px;padding:.5rem 1.1rem}
 }
-@media(min-width:1260px){.logo small{display:block}}
+@media(min-width:1260px){.logo small{display:flex}.logo img{height:72px}.bar{min-height:88px}}
 /* Sections */
 .dark{background:var(--nuit);color:#fff}
 .dark2{background:var(--nuit2);color:#fff}
@@ -299,7 +302,7 @@ def page(fn, title, desc, body, cls=''):
         '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Manrope:wght@400;600;800&amp;display=swap" rel="stylesheet">'
         '<link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head><body>\n'
         '<a class="skip-link" href="#contenu">Aller au contenu</a>\n'
-        '<header class="site-header"><div class="wrap bar"><a class="logo" href="index.html" aria-label="MSI, accueil"><img src="logo-msi.jpg" width="973" height="1307" alt="MSI"><small>Méditerranéenne Service Ligne</small></a>\n'
+        '<header class="site-header"><div class="wrap bar"><a class="logo" href="index.html" aria-label="MSI, accueil"><img src="logo-msi.jpg" width="973" height="1307" alt="MSI"><small><b>Méditerranéenne</b><span>Service Ligne</span></small></a>\n'
         '<button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>\n'
         '<nav class="menu" id="menu" aria-label="Navigation principale"><ul>' + lis + '</ul>'
         '<div class="menu-ctas"><a class="btn btn-ghost" href="' + TEL_HREF + '">Appeler</a><a class="btn btn-primary" href="contact.html#devis">Demander un devis</a></div></nav>\n'
