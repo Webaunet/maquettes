@@ -58,7 +58,7 @@ a{color:inherit}
 .head-ctas{display:none}
 @media(min-width:981px){
 .burger,.menu-ctas{display:none}
-.menu{display:block;position:static;background:none;padding:0;border:0}
+.menu{display:block;position:static;background:none;padding:0;border:0;box-shadow:none}
 .menu ul{display:flex;gap:2px}
 .menu a.nl{border:0;padding:0 14px;border-radius:999px;min-height:44px}
 .menu a.nl:hover{background:rgba(0,0,0,.06)}
@@ -133,13 +133,13 @@ a{color:inherit}
 .val p{margin:0;color:var(--muted)}
 @media(min-width:700px){.vals{grid-template-columns:repeat(3,1fr)}}
 .sv{display:grid;gap:20px;align-items:stretch}
-.sv-ico{background:var(--nuit);color:var(--ambre);border-radius:var(--r);display:grid;place-items:center;min-height:120px}
-.sv-ico svg{width:84px;height:84px}
+.sv-ico{background:var(--nuit);border-radius:var(--r);position:relative;overflow:hidden;min-height:150px}
+.sv-ico svg.scene{position:absolute;inset:0;width:100%;height:100%}
 .sv-body ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
 .sv-body li{padding-left:28px;position:relative}
 .sv-body li::before{content:"";position:absolute;left:0;top:.8em;width:14px;height:3px;background:var(--corail)}
 .sv-body li b{display:block}
-@media(min-width:981px){.sv{grid-template-columns:.8fr 1.4fr;gap:56px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}.sv-ico{min-height:300px}.sv-ico svg{width:150px;height:150px}}
+@media(min-width:981px){.sv{grid-template-columns:.8fr 1.4fr;gap:56px}.sv.rev{grid-template-columns:1.4fr .8fr}.sv.rev .sv-ico{order:2}.sv-ico{min-height:340px}}
 .flux{display:grid;margin-top:26px}
 .tier{background:var(--nuit);color:#fff;border-radius:var(--r);padding:18px 20px}
 .tier .kicker{color:var(--ambre);margin-bottom:8px}
@@ -247,12 +247,45 @@ MARK = '<svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36"
 
 def ico(body):
     return '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>'
-SHIP = ico('<path d="M6 42h52l-7 12H13z"/><path d="M14 42V24h28v18"/><path d="M42 42V32h10v10"/><path d="M20 33h16"/><path d="M6 42l-2 8"/>')
-TRUCK = ico('<path d="M4 16h34v28H4z"/><path d="M38 26h12l10 10v8H38z"/><circle cx="17" cy="48" r="5"/><circle cx="49" cy="48" r="5"/>')
-BOX = ico('<path d="M8 26l24-12 24 12-24 12z"/><path d="M8 26v20l24 12 24-12V26"/><path d="M32 38v20"/>')
 
-HERO_ART = """<svg class="hero-art" viewBox="0 0 600 310" role="img" aria-label="Illustration stylisée d'un navire Ro-Ro reliant deux rives"><defs><radialGradient id="sol" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF5A5F" stop-opacity=".9"/><stop offset="1" stop-color="#FF5A5F" stop-opacity="0"/></radialGradient></defs><circle cx="440" cy="100" r="110" fill="url(#sol)"/><path d="M30 120Q300 -20 570 120" fill="none" stroke="#F6F3F1" stroke-opacity=".7" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/><circle cx="30" cy="120" r="9" fill="#FF5A5F"/><circle cx="570" cy="120" r="9" fill="#FF5A5F"/><g transform="translate(120 140)"><path d="M14 92L-50 134 34 138Z" fill="#FF5A5F"/><path d="M0 92H340L312 138H34Z" fill="#F6F3F1"/><rect x="14" y="28" width="262" height="64" fill="#C8161D"/><path d="M30 50H262M30 70H262" stroke="#E04A50" stroke-width="5" stroke-dasharray="26 10"/><rect x="276" y="6" width="52" height="86" fill="#F6F3F1"/><rect x="288" y="20" width="30" height="12" fill="#14161A"/><rect x="296" y="-14" width="14" height="22" fill="#FF5A5F"/><path d="M-40 150q30-14 60 0t60 0 60 0 60 0 60 0 60 0 60 0 60 0" fill="none" stroke="#F6F3F1" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></g></svg>"""
-WAVES = '<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#F6F3F1" fill-opacity=".35" d="M0 30C240 0 480 70 720 30S1200 0 1440 40V90H0Z"/><path fill="#F6F3F1" d="M0 50C240 90 480 10 720 50S1200 90 1440 40V90H0Z"/></svg>'
+SHIP = ico('<path d="M6 40h52l-7 14H13z" fill="currentColor" fill-opacity=".28"/><path d="M14 40V22h28v18"/><path d="M42 40V30h10v10"/><path d="M20 31h16" stroke-dasharray="3 5"/><path d="M4 59q4-3 8 0t8 0 8 0 8 0 8 0 8 0 8 0" stroke-opacity=".55"/>')
+TRUCK = ico('<path d="M4 18h34v28H4z" fill="currentColor" fill-opacity=".28"/><path d="M38 28h12l10 10v8H38z" fill="currentColor" fill-opacity=".28"/><path d="M42 32h7l5 6H42z"/><circle cx="17" cy="48" r="5" fill="#14161A"/><circle cx="49" cy="48" r="5" fill="#14161A"/><path d="M2 58h60" stroke-opacity=".5" stroke-dasharray="6 5"/>')
+BOX = ico('<path d="M8 26l24-12 24 12-24 12z" fill="currentColor" fill-opacity=".4"/><path d="M8 26v20l24 12V38z" fill="currentColor" fill-opacity=".15"/><path d="M56 26v20L32 58V38z" fill="currentColor" fill-opacity=".28"/><path d="M20 20l24 12"/>')
+
+def ship_g(tf):
+    return ('<g transform="' + tf + '"><path d="M10 74L-34 102 22 106Z" fill="#FF5A5F"/><path d="M0 70H250L230 106H22Z" fill="#F6F3F1"/><path d="M8 88H242L230 106H22Z" fill="#C8161D"/>'
+            '<rect x="10" y="26" width="190" height="44" rx="3" fill="#2F343C"/><path d="M22 42H190M22 56H190" stroke="#9AA3B0" stroke-width="5" stroke-dasharray="12 8"/>'
+            '<rect x="200" y="6" width="44" height="64" rx="3" fill="#F6F3F1"/><path d="M208 20h28M208 34h28" stroke="#14161A" stroke-width="6" stroke-linecap="round"/>'
+            '<rect x="214" y="-12" width="16" height="20" fill="#C8161D"/><rect x="214" y="-5" width="16" height="4" fill="#F6F3F1"/>'
+            '<path d="M-50 114q15-8 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0" fill="none" stroke="#F6F3F1" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></g>')
+
+def scene(n, inner):
+    return ('<svg class="scene" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gs' + n + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2F37"/><stop offset="1" stop-color="#14161A"/></linearGradient></defs>'
+            '<rect width="400" height="300" fill="url(#gs' + n + ')"/><circle cx="200" cy="150" r="120" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="22"/>'
+            '<path d="M-10 190C120 180 280 110 410 40C290 140 120 205 -10 190Z" fill="#FF5A5F" fill-opacity=".85"/>' + inner + '</svg>')
+
+def cont(x, y, f):
+    return ('<rect x="%d" y="%d" width="64" height="30" rx="2" fill="%s"/><path d="M%d %dv22M%d %dv22M%d %dv22M%d %dv22" stroke="#000" stroke-opacity=".22" stroke-width="3"/>'
+            % (x, y, f, x + 12, y + 4, x + 24, y + 4, x + 40, y + 4, x + 52, y + 4))
+
+SCENE_SHIP = scene('1', '<path d="M0 252C60 240 120 264 200 252S340 240 400 254V300H0Z" fill="#2B3038"/>' + ship_g('translate(72 128)') + '<path d="M0 268C70 258 130 280 210 268S340 258 400 270V300H0Z" fill="#1B1E23"/>')
+SCENE_TRUCK = scene('2', '<path d="M0 205L70 145 130 195 200 125 280 200 340 155 400 205V232H0Z" fill="#232830"/><rect y="228" width="400" height="72" fill="#1B1E23"/><path d="M0 228H400" stroke="#3A3F48" stroke-width="3"/><path d="M0 268H400" stroke="#F6F3F1" stroke-opacity=".5" stroke-width="3" stroke-dasharray="20 14"/>'
+    '<g transform="translate(52 112)"><rect width="200" height="100" rx="8" fill="#F6F3F1"/><rect y="62" width="200" height="14" fill="#C8161D"/><path d="M208 28H262L292 64V104H208Z" fill="#C8161D"/><path d="M218 38H256L274 62H218Z" fill="#14161A"/><rect y="100" width="292" height="10" fill="#3A3F48"/>'
+    '<g fill="#14161A" stroke="#F6F3F1" stroke-width="5"><circle cx="40" cy="112" r="20"/><circle cx="84" cy="112" r="20"/><circle cx="244" cy="112" r="20"/></g><g fill="#F6F3F1"><circle cx="40" cy="112" r="6"/><circle cx="84" cy="112" r="6"/><circle cx="244" cy="112" r="6"/></g></g>')
+SCENE_LOG = scene('3', '<rect y="236" width="400" height="64" fill="#1B1E23"/><path d="M0 236H400" stroke="#3A3F48" stroke-width="3"/>'
+    + cont(40, 206, '#C8161D') + cont(106, 206, '#F6F3F1') + cont(172, 206, '#4A515C') + cont(73, 174, '#F6F3F1') + cont(139, 174, '#C8161D') + cont(106, 142, '#4A515C')
+    + '<rect x="296" y="70" width="10" height="166" fill="#F6F3F1"/><rect x="330" y="70" width="10" height="166" fill="#F6F3F1"/><rect x="150" y="64" width="210" height="10" fill="#F6F3F1"/><path d="M150 74L318 70" stroke="#FF5A5F" stroke-width="4"/>'
+    '<path d="M238 74V112M262 74V112" stroke="#F6F3F1" stroke-width="2"/><rect x="222" y="112" width="56" height="26" rx="2" fill="#FF5A5F"/>')
+
+HERO_ART = ('<svg class="hero-art" viewBox="0 0 600 340" role="img" aria-label="Illustration stylisée d\'un navire Ro-Ro sur la Méditerranée, entre deux rives"><defs><radialGradient id="lueur" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF5A5F" stop-opacity=".55"/><stop offset="1" stop-color="#FF5A5F" stop-opacity="0"/></radialGradient></defs>'
+    '<circle cx="400" cy="175" r="150" fill="url(#lueur)"/><circle cx="300" cy="165" r="140" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="22"/>'
+    '<path d="M8 262C170 240 400 150 568 24C420 156 190 236 8 262Z" fill="#FF5A5F"/>'
+    '<path d="M40 100Q300 -30 560 100" fill="none" stroke="#F6F3F1" stroke-opacity=".6" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>'
+    '<g fill="#FF5A5F"><circle cx="40" cy="100" r="8"/><circle cx="560" cy="100" r="8"/></g><g fill="none" stroke="#FF5A5F" stroke-opacity=".5" stroke-width="3"><circle cx="40" cy="100" r="16"/><circle cx="560" cy="100" r="16"/></g>'
+    + ship_g('translate(138 148) scale(1.1)') +
+    '<path d="M0 286C100 272 200 300 300 286S500 272 600 288" fill="none" stroke="#F6F3F1" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/><path d="M0 306C110 294 210 318 310 306S500 294 600 308" fill="none" stroke="#FF5A5F" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/></svg>')
+
+WAVES = '<svg class="waves" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#C8161D" d="M0 30C240 0 480 70 720 30S1200 0 1440 40V90H0Z"/><path fill="#F6F3F1" d="M0 50C240 90 480 10 720 50S1200 90 1440 40V90H0Z"/></svg>'
 
 NAV = [('index.html', 'Accueil'), ('presentation.html', 'Présentation'), ('services.html', 'Services'), ('zones.html', 'Zones'), ('contact.html', 'Contact')]
 
@@ -337,9 +370,9 @@ def sv(n, i, t, intro, items, alt=False, rev=False):
     return ('<section class="sec' + (' alt' if alt else '') + '"><div class="wrap sv' + (' rev' if rev else '') + '"><div class="sv-ico" aria-hidden="true">' + i + '</div>'
             '<div class="sv-body"><span class="kicker">Service ' + n + '</span><h2>' + t + '</h2><p>' + intro + '</p><ul>' + li + '</ul></div></div></section>\n')
 serv = (head('Nos services', 'Trois services pour organiser le transport de vos marchandises entre l\'Europe et l\'Afrique du Nord.')
- + sv('01', SHIP, 'Transport maritime Ro-Ro', 'Véhicules et marchandises roulantes embarqués par rampe.', ['<b>Véhicules et marchandises roulantes</b>Embarquement par rampe.', '<b>Ports et hubs de référence</b>Tanger Med, Casablanca, Sète.'])
- + sv('02', TRUCK, 'Transport routier', 'Fret par camion en Europe et en Afrique du Nord.', ['<b>Europe</b>France, Espagne, Italie.', '<b>Afrique du Nord</b>Maroc, Algérie.'], True, True)
- + sv('03', BOX, 'Solutions logistiques', 'Les services qui accompagnent le transport.', ['<b>Affrètement</b>Moyens de transport adaptés au besoin.', '<b>Commission de transport</b>Organisation du transport pour le compte du client.', '<b>Dédouanement</b>Accompagnement dans les formalités douanières.', '<b>Stockage</b>Entreposage avant ou après transport.'])
+ + sv('01', SCENE_SHIP,'Transport maritime Ro-Ro', 'Véhicules et marchandises roulantes embarqués par rampe.', ['<b>Véhicules et marchandises roulantes</b>Embarquement par rampe.', '<b>Ports et hubs de référence</b>Tanger Med, Casablanca, Sète.'])
+ + sv('02', SCENE_TRUCK,'Transport routier', 'Fret par camion en Europe et en Afrique du Nord.', ['<b>Europe</b>France, Espagne, Italie.', '<b>Afrique du Nord</b>Maroc, Algérie.'], True, True)
+ + sv('03', SCENE_LOG,'Solutions logistiques', 'Les services qui accompagnent le transport.', ['<b>Affrètement</b>Moyens de transport adaptés au besoin.', '<b>Commission de transport</b>Organisation du transport pour le compte du client.', '<b>Dédouanement</b>Accompagnement dans les formalités douanières.', '<b>Stockage</b>Entreposage avant ou après transport.'])
  + cta())
 page('services.html', 'Services – Transport maritime Ro-Ro, routier, logistique | MSI', 'Transport maritime Ro-Ro, transport routier et solutions logistiques (affrètement, commission de transport, dédouanement, stockage) avec MSI.', serv)
 
