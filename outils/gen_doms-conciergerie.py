@@ -224,34 +224,45 @@ page("lancement-airbnb.html", "Lancement Airbnb | Doms Conciergerie", "Doms Conc
 
 # ---------- contact ----------
 opts = "".join("<option>%s</option>" % s[1] for s in SERVICES)
+logs = "".join("<option>%s</option>" % x for x in ["Studio", "Appartement", "Maison", "Autre"])
+def fin(i, label, icon, typ, auto, req=False, mode=""):
+    ra = ' required aria-required="true"' if req else ""
+    st = ' <span class="req" aria-hidden="true">*</span>' if req else ""
+    return ('<div class="field"><label for="%s">%s%s</label><div class="inp">%s<input id="%s" name="%s" type="%s" autocomplete="%s"%s%s aria-describedby="e-%s"></div><p class="err" id="e-%s"></p></div>'
+            % (i, label, st, ic(icon), i, i, typ, auto, ra, mode, i, i))
 contact = phero("Contact", "Parlons de votre logement.", "Remplissez ce formulaire : il prépare votre message, que vous pourrez envoyer ou copier en un geste.") + '''
-<section class="ivory" id="devis"><div class="wrap"><div class="fcard">
-<h2>Demander un devis</h2>
+<section class="ivory" id="devis"><div class="wrap cgrid">
+<aside class="dark cside"><p class="eyebrow">Devis</p><h2>Parlons de votre projet.</h2><p>Quelques lignes suffisent pour que nous comprenions votre besoin.</p>
+<ol class="cs-steps"><li><span class="num">1</span><div><h3>Décrivez votre logement</h3><p>Type de bien et services souhaités.</p></div></li>
+<li><span class="num">2</span><div><h3>Préparez votre message</h3><p>Le formulaire le rédige pour vous.</p></div></li>
+<li><span class="num">3</span><div><h3>Envoyez-le-nous</h3><p>Par e-mail ou SMS, en un geste.</p></div></li></ol>
+<p class="cs-mail">''' + ic("mail") + '''<span>''' + EMAIL + '''</span></p>''' + DECO_KEY + '''</aside>
+<div class="fcard">
 <!-- À COMPLÉTER PAR LE PROPRIÉTAIRE DU SITE :
      data-email="adresse@exemple.fr"  -> affiche le bouton « Envoyer par e-mail » (mailto:)
      data-sms="0600000000"            -> affiche le bouton « Envoyer par SMS » (sms:)
      data-tel="0600000000"            -> affiche le bouton « Appeler » (tel:)
      Tant qu'un attribut est vide, le bouton correspondant reste masqué. Rien n'est transmis automatiquement. -->
 <form id="form-devis" novalidate data-email="" data-sms="" data-tel="">
-<div class="field"><label for="nom">Nom et prénom <span class="req" aria-hidden="true">*</span></label><div class="inp">%s<input id="nom" name="nom" type="text" autocomplete="name" required aria-required="true" aria-describedby="e-nom"></div><p class="err" id="e-nom"></p></div>
-<div class="field"><label for="tel">Téléphone</label><div class="inp">%s<input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="e-tel"></div><p class="err" id="e-tel"></p></div>
-<div class="field"><label for="mail">E-mail <span class="req" aria-hidden="true">*</span></label><div class="inp">%s<input id="mail" name="mail" type="email" autocomplete="email" required aria-required="true" aria-describedby="e-mail"></div><p class="err" id="e-mail"></p></div>
-<div class="field"><label for="srv">Service souhaité</label><div class="inp">%s<select id="srv" name="srv"><option>Plusieurs services / je ne sais pas encore</option>%s</select></div></div>
+<fieldset><legend><span class="lg-n">1</span>Vos coordonnées</legend>
+''' + fin("nom", "Nom et prénom", "user", "text", "name", True) + fin("tel", "Téléphone", "phone", "tel", "tel", False, ' inputmode="tel"') + fin("mail", "E-mail", "mail", "email", "email", True) + '''
+</fieldset>
+<fieldset><legend><span class="lg-n">2</span>Votre projet</legend>
+<div class="field"><label for="log">Type de logement</label><div class="inp">''' + ic("pin") + '''<select id="log" name="log">''' + logs + '''</select></div></div>
+<div class="field"><label for="srv">Service souhaité</label><div class="inp">''' + ic("lancement") + '''<select id="srv" name="srv"><option>Plusieurs services / je ne sais pas encore</option>''' + opts + '''</select></div></div>
 <div class="field full"><label for="msg">Votre message <span class="req" aria-hidden="true">*</span></label><textarea id="msg" name="msg" rows="4" required aria-required="true" aria-describedby="e-msg" placeholder="Décrivez votre logement et vos besoins"></textarea><p class="err" id="e-msg"></p></div>
-<p class="note full">Les champs marqués d'un astérisque (*) sont obligatoires.</p>
-<div class="full"><button class="btn btn-p" type="submit">%s Préparer mon message</button></div>
+</fieldset>
+<div class="fsub"><button class="btn btn-p" type="submit">''' + ic("send") + ''' Préparer mon message</button><p class="note">Les champs marqués d'un astérisque (*) sont obligatoires.</p></div>
 </form>
 <div id="resultat" class="result" hidden><h3>Votre message est prêt</h3><textarea id="texte" readonly rows="6" aria-label="Message préparé"></textarea>
-<div class="btns"><button class="btn btn-p" type="button" id="copier">%s Copier</button><a class="btn btn-s" id="b-mail" href="#" hidden>%s Envoyer par e-mail</a><a class="btn btn-s" id="b-sms" href="#" hidden>%s Envoyer par SMS</a><a class="btn btn-s" id="b-tel" href="#" hidden>%s Appeler</a></div>
+<div class="btns"><button class="btn btn-p" type="button" id="copier">''' + ic("copy") + ''' Copier</button><a class="btn btn-s" id="b-mail" href="#" hidden>''' + ic("mail") + ''' Envoyer par e-mail</a><a class="btn btn-s" id="b-sms" href="#" hidden>''' + ic("communication") + ''' Envoyer par SMS</a><a class="btn btn-s" id="b-tel" href="#" hidden>''' + ic("phone") + ''' Appeler</a></div>
 <p class="note" id="etat" role="status"></p></div>
 </div></div></section>
 <section class="dark" id="coordonnees"><div class="wrap"><p class="eyebrow">Coordonnées</p><h2>Nous joindre.</h2><div class="g3">
-<article class="sc"><span class="ico">%s</span><h3>Téléphone</h3><p>Coordonnées à renseigner</p></article>
-<article class="sc"><span class="ico">%s</span><h3>E-mail</h3><p>%s</p></article>
-<article class="sc"><span class="ico">%s</span><h3>Adresse</h3><p>Coordonnées à renseigner</p></article></div>
-<div class="plan"><span class="ico">%s</span><p>Plan à ajouter</p></div></div></section>
-''' % (ic("user"), ic("phone"), ic("mail"), ic("deco"), opts, ic("send"), ic("copy"), ic("mail"), ic("communication"), ic("phone"),
-       ic("phone"), ic("mail"), EMAIL, ic("pin"), ic("map"))
+<article class="sc"><span class="ico">''' + ic("phone") + '''</span><h3>Téléphone</h3><p>Coordonnées à renseigner</p></article>
+<article class="sc"><span class="ico">''' + ic("mail") + '''</span><h3>E-mail</h3><p>''' + EMAIL + '''</p></article>
+<article class="sc"><span class="ico">''' + ic("pin") + '''</span><h3>Adresse</h3><p>Coordonnées à renseigner</p></article></div></div></section>
+'''
 page("contact.html", "Contact et devis | Doms Conciergerie", "Contactez Doms Conciergerie pour un devis : formulaire de demande, e-mail et coordonnées.", contact)
 
 # ---------- mentions légales ----------
@@ -328,12 +339,21 @@ nav.main a:not(.btn):hover{background:var(--sand)}nav.main a[aria-current=page]{
 .phero{position:relative;overflow:hidden;padding:56px 0 52px}@media(min-width:900px){.phero{padding:88px 0 80px}}.phero .wrap{position:relative;z-index:1}
 .deco{position:absolute;right:4%;top:14px;height:240px;width:auto;color:var(--acc);opacity:.14}@media(max-width:700px){.deco{height:170px;right:-10px;opacity:.1}}
 /* formulaire */
-.fcard{max-width:820px;margin-inline:auto;background:var(--cream);border:1px solid rgba(23,19,15,.14);border-radius:24px;padding:28px 22px}
-form{display:grid;gap:22px}@media(min-width:700px){form{grid-template-columns:1fr 1fr}.fcard{padding:48px}.full{grid-column:1/-1}}
+.fcard{margin-inline:auto;box-shadow:0 24px 60px -30px rgba(23,19,15,.35);background:#fffdf9;border:1px solid rgba(23,19,15,.14);border-radius:24px;padding:28px 22px}
+form{display:grid;gap:28px}fieldset{border:0;margin:0;padding:0;min-width:0;display:grid;gap:16px}legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.lg-n{width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--cream);display:grid;place-items:center;letter-spacing:0}
+.fsub{display:grid;gap:14px;justify-items:start}.fsub .note{margin:0}
+@media(min-width:700px){fieldset{grid-template-columns:1fr 1fr;gap:20px}form{gap:30px}.fcard{padding:36px 40px}.full{grid-column:1/-1}}
+.cgrid{display:grid;gap:0}.cside{display:none}
+#devis{padding:32px 0 36px}@media(min-width:900px){#devis{padding:84px 0}}
+@media(min-width:900px){.cgrid{grid-template-columns:.75fr 1.25fr;gap:32px;align-items:stretch}.cside{display:block;position:relative;overflow:hidden;border-radius:28px;padding:48px 40px}.fcard{width:100%}}
+.cs-steps{list-style:none;margin:32px 0;padding:0;display:grid;gap:24px}.cs-steps li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}.cs-steps h3{color:var(--cream);margin:0 0 2px}.cs-steps p{margin:0}.cside .num{background:var(--acc)}
+.cs-mail{display:flex;align-items:center;gap:12px;margin:0;padding-top:24px;border-top:1px solid rgba(248,232,217,.2);color:var(--cream)!important;font-weight:700;overflow-wrap:anywhere}.cs-mail .ic{color:var(--accl)}
+.cside .deco{top:auto;bottom:-40px;right:20px;height:220px;color:var(--accl);opacity:.1}
 .field label{display:block;font-weight:700;margin-bottom:8px}.req{color:var(--acc)}
 .inp{position:relative}.inp .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--acc);pointer-events:none}
 input,select,textarea{width:100%;min-height:48px;padding:10px 14px;font:400 1rem "DM Sans",sans-serif;color:var(--ink);background:var(--ivory);border:2px solid rgba(23,19,15,.35);border-radius:12px}
-.inp input,.inp select{padding-left:48px}textarea{resize:vertical;min-height:110px}
+.inp input,.inp select{padding-left:48px}textarea{resize:vertical;min-height:88px}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-color:var(--ink)}
 .field.bad input,.field.bad textarea{border-color:#a11d1d}.err{color:#a11d1d;font-weight:500;margin:6px 0 0}.err:empty{display:none}
 .note{color:var(--mut);margin:0}.result{margin-top:20px;padding-top:20px;border-top:2px dashed rgba(23,19,15,.25)}.result[hidden],[hidden]{display:none!important}
@@ -373,7 +393,7 @@ ok=err('mail',RM.test(v('mail'))?'':'Indiquez une adresse e-mail valide.')&&ok;
 ok=err('msg',v('msg')?'':'Écrivez votre message.')&&ok;return ok;}
 f.addEventListener('submit',function(e){e.preventDefault();if(!val()){var bad=f.querySelector('[aria-invalid]');if(bad)bad.focus();return;}
 var v=function(i){return f.elements[i].value.trim();};
-var t='Bonjour,\n\nJe souhaite un devis : '+f.elements.srv.value+'.\n\n'+v('msg')+'\n\nNom : '+v('nom')+'\nE-mail : '+v('mail')+(v('tel')?'\nTéléphone : '+v('tel'):'')+'\n\nMerci.';
+var t='Bonjour,\n\nJe souhaite un devis : '+f.elements.srv.value+'.\n\nType de logement : '+f.elements.log.value+'\n\n'+v('msg')+'\n\nNom : '+v('nom')+'\nE-mail : '+v('mail')+(v('tel')?'\nTéléphone : '+v('tel'):'')+'\n\nMerci.';
 d.getElementById('texte').value=t;d.getElementById('resultat').hidden=false;d.getElementById('etat').textContent='';
 var em=f.dataset.email,sm=f.dataset.sms,tl=f.dataset.tel,be=d.getElementById('b-mail'),bs=d.getElementById('b-sms'),bt=d.getElementById('b-tel');
 be.hidden=!em;if(em){be.href='mailto:'+em+'?subject='+encodeURIComponent('Demande de devis')+'&body='+encodeURIComponent(t);}
