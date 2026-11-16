@@ -61,7 +61,7 @@ nav.main a:not(.btn):hover{background:var(--sand)}nav.main a[aria-current=page]{
 .deco{position:absolute;right:4%;top:14px;height:240px;width:auto;color:var(--acc);opacity:.14}@media(max-width:700px){.deco{height:170px;right:-10px;opacity:.1}}
 /* formulaire */
 .fcard{margin-inline:auto;box-shadow:0 24px 60px -30px rgba(23,19,15,.35);background:#fffdf9;border:1px solid rgba(23,19,15,.14);border-radius:24px;padding:28px 22px}
-form{display:grid;gap:28px}fieldset{border:0;margin:0;padding:0;min-width:0;display:grid;gap:16px}legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+form{display:grid;gap:28px}fieldset{border:0;margin:0;padding:0;min-width:0;display:grid;gap:14px}legend{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
 .lg-n{width:32px;height:32px;border-radius:50%;background:var(--acc);color:var(--cream);display:grid;place-items:center;letter-spacing:0}
 .fsub{display:grid;gap:14px;justify-items:start}.fsub .note{margin:0}
 @media(min-width:700px){fieldset{grid-template-columns:1fr 1fr;gap:20px}form{gap:30px}.fcard{padding:36px 40px}.full{grid-column:1/-1}}
@@ -74,7 +74,7 @@ form{display:grid;gap:28px}fieldset{border:0;margin:0;padding:0;min-width:0;disp
 .field label{display:block;font-weight:700;margin-bottom:8px}.req{color:var(--acc)}
 .inp{position:relative}.inp .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--acc);pointer-events:none}
 input,select,textarea{width:100%;min-height:48px;padding:10px 14px;font:400 1rem "DM Sans",sans-serif;color:var(--ink);background:var(--ivory);border:2px solid rgba(23,19,15,.35);border-radius:12px}
-.inp input,.inp select{padding-left:48px}textarea{resize:vertical;min-height:88px}
+.inp input,.inp select{padding-left:48px}textarea{resize:vertical;min-height:80px}
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px;border-color:var(--ink)}
 .field.bad input,.field.bad textarea{border-color:#a11d1d}.err{color:#a11d1d;font-weight:500;margin:6px 0 0}.err:empty{display:none}
 .note{color:var(--mut);margin:0}.result{margin-top:20px;padding-top:20px;border-top:2px dashed rgba(23,19,15,.25)}.result[hidden],[hidden]{display:none!important}
