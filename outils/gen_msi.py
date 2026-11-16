@@ -163,8 +163,23 @@ a{color:inherit}
 /* Pages internes */
 .page-head{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:clamp(32px,5vw,64px) 0 clamp(36px,5.5vw,68px)}
 .page-head::after{content:"";position:absolute;right:-90px;top:-110px;width:380px;height:380px;border-radius:50%;border:44px solid rgba(255,255,255,.06)}
-.page-head .wrap{position:relative;z-index:1}
-.page-head .lede{max-width:60ch;margin:0}
+.page-head .wrap{position:relative;z-index:2}
+.page-head .lede{max-width:56ch;margin:0}
+.page-head h1{font-size:clamp(2rem,5vw,3.3rem);margin-bottom:.35em}
+.ph-head{padding:clamp(12px,2vw,24px) 0 clamp(44px,6vw,84px);clip-path:polygon(0 0,100% 0,100% 100%,0 calc(100% - 32px))}
+.ph-head::after{display:none}
+.ph-head::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,42,85,.92) 38%,rgba(11,42,85,.5) 70%,rgba(11,42,85,.2) 100%)}
+.ph-bg{position:absolute;top:0;right:0;width:min(100%,1200px);height:100%;object-fit:cover;object-position:60% 50%}
+.ph-bg.w16{width:min(100%,1600px)}
+@media(max-width:699px){.ph-head::before{background:rgba(11,42,85,.82)}}
+.crumbs{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:var(--soft)}
+.crumbs a{display:inline-flex;align-items:center;min-height:44px;color:#fff;text-decoration:none;font-weight:600}
+.crumbs a:hover{text-decoration:underline}
+.crumbs span:last-child{color:var(--lt);font-weight:700}
+.ph-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.1);color:#fff;font-weight:700;text-decoration:none}
+a.chip:hover{background:rgba(255,255,255,.22)}
 .facts{display:grid;margin:0}
 .facts div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
 .facts dt{font-weight:800;color:var(--blue)}
@@ -206,7 +221,6 @@ a{color:inherit}
 .office h3{margin-bottom:.2em}
 .office p{margin:0;color:var(--muted)}
 @media(min-width:700px){.offices{grid-template-columns:1fr 1fr}}
-.plan{margin-top:14px;border:2px dashed var(--line);border-radius:var(--r);min-height:96px;display:grid;place-items:center;color:var(--muted);font-weight:700}
 .tels{display:grid;gap:10px;margin-top:18px}
 .tel{display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 18px;background:#fff;border:1.5px solid var(--line);border-radius:12px;text-decoration:none;font-weight:800;color:var(--navy);transition:border-color .2s,background .2s}
 .tel:hover{border-color:var(--blue);background:var(--sky)}
@@ -373,8 +387,27 @@ def cta(h='Un transport à organiser ?', p='Parlez-nous de votre trajet et de vo
     return ('<section class="cta sec"><div class="wrap cta-in"><div><h2>' + h + '</h2><p>' + p + '</p></div>'
             '<div class="btns"><a class="btn btn-ghost" href="tel:' + TEL + '">Appeler</a><a class="btn btn-white" href="contact.html#devis">Demander un devis</a></div></div></section>')
 
+HEADS = {
+    'Une société née pour relier les deux rives': dict(img='carte-routier.jpg', w=1200, alt=ALT_ROUT, crumb='Présentation', kicker='Qui sommes-nous',
+        chips=[('Créée en 2024', None), ('Siège à Paris', None), ('Bureau à Marseille', None)]),
+    'Nos services': dict(img='hero-navire.jpg', w=1600, alt=ALT_HERO, crumb='Services', kicker='Ce que nous faisons',
+        chips=[('Maritime Ro-Ro', '#roro'), ('Transport routier', '#routier'), ('Solutions logistiques', '#logistique')]),
+    'Zones d\'intervention': dict(img='carte-roro.jpg', w=1200, alt=ALT_RORO, crumb='Zones', kicker='Où nous intervenons',
+        chips=[('France · Espagne · Italie', None), ('Maroc · Algérie', None), ('Tanger Med · Casablanca · Sète', None)]),
+    'Parlons de votre transport': dict(img='presentation.jpg', w=1200, alt=ALT_PRES, crumb='Contact', kicker='Contact',
+        chips=[(TEL_AFF, 'tel:' + TEL), (MAIL, 'mailto:' + MAIL)]),
+}
+
 def head(h1, lede):
-    return '<section class="page-head"><div class="wrap"><h1>' + h1 + '</h1><p class="lede">' + lede + '</p></div></section>'
+    k = HEADS.get(h1)
+    if not k:
+        return '<section class="page-head"><div class="wrap"><h1>' + h1 + '</h1><p class="lede">' + lede + '</p></div></section>'
+    chips = ''.join(('<li><a class="chip" href="%s">%s</a></li>' % (u, t)) if u else ('<li><span class="chip">%s</span></li>' % t) for t, u in k['chips'])
+    return ('<section class="page-head ph-head"><img class="ph-bg' + (' w16' if k['w'] == 1600 else '') + '" src="' + k['img'] + '" width="' + str(k['w']) + '" height="900" alt="' + k['alt'] + '">'
+            '<div class="wrap"><nav class="crumbs" aria-label="Fil d\'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>' + k['crumb'] + '</span></nav>'
+            '<span class="kicker">' + k['kicker'] + '</span><h1>' + h1 + '</h1><p class="lede">' + lede + '</p>'
+            '<div class="ph-ctas"><a class="btn btn-white" href="contact.html#devis">Demander un devis</a><a class="btn btn-ghost" href="tel:' + TEL + '">Appeler</a></div>'
+            '<ul class="chips">' + chips + '</ul></div></section>')
 
 def quick(href, i, t, s):
     return '<a class="q" href="' + href + '"><span class="qi">' + i + '</span><span><b>' + t + '</b><span class="t">' + s + '</span></span></a>'
@@ -470,7 +503,7 @@ tels = '<a class="tel" href="tel:' + TEL + '"><small>Fixe</small>' + TEL_AFF + '
 con = (head('Parlons de votre transport', 'Décrivez votre besoin : nous préparons avec vous la meilleure solution entre l\'Europe et l\'Afrique du Nord.')
  + '<section class="sec" id="coordonnees"><div class="wrap"><span class="kicker">Nos bureaux</span><h2>Paris et Marseille</h2>'
  '<div class="offices"><div class="office"><h3>Siège social – Paris</h3><p>' + PARIS + ', France</p></div><div class="office"><h3>Bureau de Marseille</h3><p>' + MARSEILLE + ', France</p></div></div>'
- '<div class="plan">Plan à ajouter</div></div></section>\n'
+ '</div></section>\n'
  '<section class="sec sky"><div class="wrap"><span class="kicker">Joindre MSI</span><h2>Téléphone et e-mail</h2><div class="tels">' + tels + '</div>'
  '<div class="tels"><a class="tel" href="mailto:info@msi-prs.fr"><small>E-mail</small>info@msi-prs.fr</a><a class="tel" href="mailto:operations@msi-prs.fr"><small>Opérations</small>operations@msi-prs.fr</a></div></div></section>\n'
  '<section class="sec" id="devis"><div class="wrap devis"><div class="devis-side"><h2>Demander un devis</h2><p>Quelques lignes suffisent pour étudier votre demande.</p><ul class="steps-mini"><li>Décrivez votre trajet et vos marchandises</li><li>Envoyez-nous votre message</li><li>Nous revenons vers vous avec une proposition</li></ul></div><div class="form-card">\n'
