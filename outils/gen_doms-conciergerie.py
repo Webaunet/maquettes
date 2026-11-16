@@ -230,12 +230,12 @@ def fin(i, label, icon, typ, auto, req=False, mode=""):
     st = ' <span class="req" aria-hidden="true">*</span>' if req else ""
     return ('<div class="field"><label for="%s">%s%s</label><div class="inp">%s<input id="%s" name="%s" type="%s" autocomplete="%s"%s%s aria-describedby="e-%s"></div><p class="err" id="e-%s"></p></div>'
             % (i, label, st, ic(icon), i, i, typ, auto, ra, mode, i, i))
-contact = phero("Contact", "Parlons de votre logement.", "Remplissez ce formulaire : il prépare votre message, que vous pourrez envoyer ou copier en un geste.") + '''
+contact = phero("Contact", "Parlons de votre logement.", "Décrivez-nous votre projet : nous vous répondons avec une proposition adaptée à votre logement.") + '''
 <section class="ivory" id="devis"><div class="wrap cgrid">
 <aside class="dark cside"><p class="eyebrow">Devis</p><h2>Parlons de votre projet.</h2><p>Quelques lignes suffisent pour que nous comprenions votre besoin.</p>
 <ol class="cs-steps"><li><span class="num">1</span><div><h3>Décrivez votre logement</h3><p>Type de bien et services souhaités.</p></div></li>
-<li><span class="num">2</span><div><h3>Préparez votre message</h3><p>Le formulaire le rédige pour vous.</p></div></li>
-<li><span class="num">3</span><div><h3>Envoyez-le-nous</h3><p>Par e-mail ou SMS, en un geste.</p></div></li></ol>
+<li><span class="num">2</span><div><h3>Envoyez votre demande</h3><p>Le formulaire rassemble vos informations.</p></div></li>
+<li><span class="num">3</span><div><h3>Nous vous répondons</h3><p>Avec une proposition adaptée à votre projet.</p></div></li></ol>
 <p class="cs-mail">''' + ic("mail") + '''<span>''' + EMAIL + '''</span></p>''' + DECO_KEY + '''</aside>
 <div class="fcard">
 <!-- À COMPLÉTER PAR LE PROPRIÉTAIRE DU SITE :
@@ -252,9 +252,9 @@ contact = phero("Contact", "Parlons de votre logement.", "Remplissez ce formulai
 <div class="field"><label for="srv">Service souhaité</label><div class="inp">''' + ic("lancement") + '''<select id="srv" name="srv"><option>Plusieurs services / je ne sais pas encore</option>''' + opts + '''</select></div></div>
 <div class="field full"><label for="msg">Votre message <span class="req" aria-hidden="true">*</span></label><textarea id="msg" name="msg" rows="4" required aria-required="true" aria-describedby="e-msg" placeholder="Décrivez votre logement et vos besoins"></textarea><p class="err" id="e-msg"></p></div>
 </fieldset>
-<div class="fsub"><button class="btn btn-p" type="submit">''' + ic("send") + ''' Préparer mon message</button><p class="note">Les champs marqués d'un astérisque (*) sont obligatoires.</p></div>
+<div class="fsub"><button class="btn btn-p" type="submit">''' + ic("send") + ''' Envoyer ma demande</button><p class="note">Les champs marqués d'un astérisque (*) sont obligatoires.</p></div>
 </form>
-<div id="resultat" class="result" hidden><h3>Votre message est prêt</h3><textarea id="texte" readonly rows="6" aria-label="Message préparé"></textarea>
+<div id="resultat" class="result" hidden><h3>Votre demande est prête</h3><textarea id="texte" readonly rows="6" aria-label="Votre demande"></textarea>
 <div class="btns"><button class="btn btn-p" type="button" id="copier">''' + ic("copy") + ''' Copier</button><a class="btn btn-s" id="b-mail" href="#" hidden>''' + ic("mail") + ''' Envoyer par e-mail</a><a class="btn btn-s" id="b-sms" href="#" hidden>''' + ic("communication") + ''' Envoyer par SMS</a><a class="btn btn-s" id="b-tel" href="#" hidden>''' + ic("phone") + ''' Appeler</a></div>
 <p class="note" id="etat" role="status"></p></div>
 </div></div></section>
@@ -271,7 +271,7 @@ ment = phero("Informations légales", "Mentions légales", "Informations relativ
 <div><dt>Nom</dt><dd>Doms Conciergerie</dd></div><div><dt>Forme juridique</dt><dd>%s</dd></div><div><dt>Siège social</dt><dd>%s</dd></div>
 <div><dt>SIREN</dt><dd>105155444</dd></div><div><dt>Directeur de la publication</dt><dd>%s</dd></div><div><dt>E-mail</dt><dd>%s</dd></div><div><dt>Hébergeur</dt><dd>%s</dd></div></dl></div></section>
 <section class="sand"><div class="wrap narrow"><h2>Données et propriété</h2>
-<p>Ce site ne collecte aucune donnée automatiquement : le formulaire de contact prépare un message que vous choisissez d'envoyer ou de copier.</p>
+<p>Ce site ne collecte aucune donnée automatiquement : les informations saisies dans le formulaire de contact ne sont enregistrées par aucun serveur : elles servent uniquement à rédiger votre demande.</p>
 <p>L'ensemble des contenus du site (textes, visuels, logo) est la propriété de Doms Conciergerie. Toute reproduction sans autorisation est interdite.</p></div></section>
 ''' % (TODO, TODO, TODO, EMAIL, TODO)
 page("mentions-legales.html", "Mentions légales | Doms Conciergerie", "Mentions légales du site de Doms Conciergerie.", ment)
@@ -402,7 +402,7 @@ bt.hidden=!tl;if(tl){bt.href='tel:'+tl.replace(/\s/g,'');}
 d.getElementById('resultat').scrollIntoView({behavior:'smooth',block:'nearest'});});
 ['nom','tel','mail','msg'].forEach(function(i){f.elements[i].addEventListener('input',function(){if(d.getElementById('e-'+i).textContent)val();});});
 d.getElementById('copier').addEventListener('click',function(){var ta=d.getElementById('texte'),s=d.getElementById('etat');
-function ok(){s.textContent='Message copié.';}function ko(){ta.select();try{d.execCommand('copy');ok();}catch(x){s.textContent='Sélectionnez le texte puis copiez-le.';}}
+function ok(){s.textContent='Demande copiée.';}function ko(){ta.select();try{d.execCommand('copy');ok();}catch(x){s.textContent='Sélectionnez le texte puis copiez-le.';}}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(ok,ko);}else{ko();}});
 })();
 '''
