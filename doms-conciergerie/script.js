@@ -27,6 +27,6 @@ bt.hidden=!tl;if(tl){bt.href='tel:'+tl.replace(/\s/g,'');}
 d.getElementById('resultat').scrollIntoView({behavior:'smooth',block:'nearest'});});
 ['nom','tel','mail','msg'].forEach(function(i){f.elements[i].addEventListener('input',function(){if(d.getElementById('e-'+i).textContent)val();});});
 d.getElementById('copier').addEventListener('click',function(){var ta=d.getElementById('texte'),s=d.getElementById('etat');
-function ok(){s.textContent='Message copié.';}function ko(){ta.select();try{d.execCommand('copy');ok();}catch(x){s.textContent='Sélectionnez le texte puis copiez-le.';}}
+function ok(){s.textContent='Demande copiée.';}function ko(){ta.select();try{d.execCommand('copy');ok();}catch(x){s.textContent='Sélectionnez le texte puis copiez-le.';}}
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(ok,ko);}else{ko();}});
 })();
