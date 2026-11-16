@@ -2,6 +2,6 @@
 
 Maquette de site vitrine (non publiée, noindex).
 
-Pages : index, vendre-avec-moi, faire-estimer-mon-bien, mon-secteur, mes-biens, a-propos-contact.
+Pages : index, vendre-avec-moi, faire-estimer-mon-bien, mon-secteur, mes-biens, a-propos-contact, honoraires, mentions-legales.
 
 Contenus provisoires à remplacer avant publication : photos, avis, honoraires, RSAC, mentions légales.
