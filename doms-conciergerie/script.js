@@ -18,7 +18,7 @@ ok=err('mail',RM.test(v('mail'))?'':'Indiquez une adresse e-mail valide.')&&ok;
 ok=err('msg',v('msg')?'':'Écrivez votre message.')&&ok;return ok;}
 f.addEventListener('submit',function(e){e.preventDefault();if(!val()){var bad=f.querySelector('[aria-invalid]');if(bad)bad.focus();return;}
 var v=function(i){return f.elements[i].value.trim();};
-var t='Bonjour,\n\nJe souhaite un devis : '+f.elements.srv.value+'.\n\n'+v('msg')+'\n\nNom : '+v('nom')+'\nE-mail : '+v('mail')+(v('tel')?'\nTéléphone : '+v('tel'):'')+'\n\nMerci.';
+var t='Bonjour,\n\nJe souhaite un devis : '+f.elements.srv.value+'.\n\nType de logement : '+f.elements.log.value+'\n\n'+v('msg')+'\n\nNom : '+v('nom')+'\nE-mail : '+v('mail')+(v('tel')?'\nTéléphone : '+v('tel'):'')+'\n\nMerci.';
 d.getElementById('texte').value=t;d.getElementById('resultat').hidden=false;d.getElementById('etat').textContent='';
 var em=f.dataset.email,sm=f.dataset.sms,tl=f.dataset.tel,be=d.getElementById('b-mail'),bs=d.getElementById('b-sms'),bt=d.getElementById('b-tel');
 be.hidden=!em;if(em){be.href='mailto:'+em+'?subject='+encodeURIComponent('Demande de devis')+'&body='+encodeURIComponent(t);}
