@@ -133,7 +133,7 @@ A=A.replace('<p class="hv-kick">À propos</p>','<p class="hv-kick">L’entrepris
 assert 'Titre de' not in A and 'Prénom' not in A and 'Texte alternatif' not in A and 'Un second' not in A
 Mm=M('M2')
 Mm=Mm.replace('Titre de la section','De l’échange à l’entretien').replace("Une phrase d'introduction.",'Chaque projet de jardin suit les mêmes étapes, expliquées avant d’être menées.')
-for t,x in [('Étape 1','Échange : vous décrivez votre jardin et vos attentes.'),('Étape 2','Conseil : nous vous proposons les travaux adaptés à votre terrain.'),('Étape 3','Réalisation : les travaux sont menés avec soin.'),('Étape 4','Entretien : un suivi régulier si vous le souhaitez.')]:
+for t,x in [('Étape 1','Échange : Vous décrivez votre jardin et vos attentes.'),('Étape 2','Conseil : Nous vous proposons les travaux adaptés à votre terrain.'),('Étape 3','Réalisation : Les travaux sont menés avec soin.'),('Étape 4','Entretien : Un suivi régulier si vous le souhaitez.')]:
     lab,txt=x.split(' : ',1)
     Mm=Mm.replace('<h3>%s</h3><p>Deux phrases concrètes.</p>'%t,'<h3>%s</h3><p>%s</p>'%(lab,txt))
 assert 'Étape' not in Mm and 'Deux phrases' not in Mm and 'Titre de' not in Mm
@@ -205,17 +205,17 @@ hp+='''<section class="sec sec--under" style="min-height:0" aria-labelledby="h1"
  tile(1,'p1.jpg','Allée en pavés bordée de massifs (image d’illustration)','Allées et dallages','Pose d’allées et de dallages pour circuler dans votre jardin.',*SZ['p1.jpg']),
  tile(2,'p2.jpg','Plantation d’un massif par un jardinier (image d’illustration)','Plantations','Arbustes, massifs et végétaux installés avec soin.',*SZ['p2.jpg']),
  tile(3,'entretien.jpg','Pelouse entretenue devant une maison (image d’illustration)','Entretien du jardin','Tonte, taille et désherbage pour garder votre jardin net.',*SZ['entretien.jpg']),
- COMS,TELI,TEL)
+ NOM,TELI,TEL)
 hp+=foot()
 open(D+'/prestations.html','w',encoding='utf8').write(hp)
 # ---- entreprise
-he=head('L’entreprise · %s à %s'%(NOM,COMS),'%s, entreprise d’aménagement paysager à %s (78), dirigée par Dolino Hoffmann.'%(NOM,COMS))+hdr('entreprise.html')
+he=head('L’entreprise · %s à %s'%(NOM,COMS),'%s, entreprise d’aménagement paysager à %s (78).'%(NOM,COMS))+hdr('entreprise.html')
 he+='''<section class="sec sec--under" style="min-height:0" aria-labelledby="h1">
   <div class="wrap">
     <div class="sec__head">
       <p class="eyebrow">L’entreprise</p>
       <h1 id="h1">%s, paysagiste à %s</h1>
-      <p>%s est une entreprise d’aménagement paysager basée à %s, dans les Yvelines (78). Elle est dirigée par Dolino Hoffmann.</p>
+      <p>%s est une entreprise d’aménagement paysager basée à %s, dans les Yvelines (78).</p>
     </div>
   </div>
 </section>
