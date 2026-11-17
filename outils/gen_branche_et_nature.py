@@ -205,5 +205,13 @@ index();prest();contact()
 
 r=subprocess.run(['python3','-I',MOD+'mod.py',D,'H8','V3','A5','M4','C3','F5','K4','--bg','#f6f3e8','--bg2','#e8e6cf','--ink','#23261a','--mu','#53563f','--main','#3b4a1f','--acc','#c4912a','--accink','#23261a','--fh','Fraunces','--fb','Nunito Sans','--fw','700'],capture_output=True,text=True)
 print(r.stdout,r.stderr);assert r.returncode==0
+open(D+'style.css','a',encoding='utf8').write("""
+/* harmonisation des sections : mêmes espaces et hauteurs sur toutes les pages */
+.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:clamp(40px,6vw,72px)!important;min-height:0!important}
+.sc3{padding-block:clamp(48px,7vw,80px)!important}
+.hf5-b{padding:clamp(18px,3vw,28px) 0 14px!important}
+.sa5-c,.sm4-c{min-height:0}
+@media(max-width:620px){.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:40px!important}}
+""")
 open(D+'README.md','w',encoding='utf8').write(f'# {NOM}\n\nMaquette de site vitrine (démonstration) : accueil, prestations, contact.\n')
 print('ok')

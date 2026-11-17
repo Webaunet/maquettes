@@ -474,3 +474,10 @@ main>.band{z-index:2}
 .sk4 .sk-sum{background:rgba(255,255,255,.14);color:#fff}
 .sk4 .hv-btn-s{color:#fff;border-color:#fff}
 @media(min-width:900px){.sk4 .sk-grid{grid-template-columns:1.4fr .6fr;gap:40px}}
+
+/* harmonisation des sections : mêmes espaces et hauteurs sur toutes les pages */
+.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:clamp(40px,6vw,72px)!important;min-height:0!important}
+.sc3{padding-block:clamp(48px,7vw,80px)!important}
+.hf5-b{padding:clamp(18px,3vw,28px) 0 14px!important}
+.sa5-c,.sm4-c{min-height:0}
+@media(max-width:620px){.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:40px!important}}
