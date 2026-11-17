@@ -46,7 +46,7 @@ print('mod:', r.stdout.strip()[-200:])
 open(cp, 'a', encoding='utf8').write(
     '\n/* E.S.A. */\n.logo small{font-size:1rem}\n'
     '@media(max-width:620px){.hf5-top{display:none}.sv6-big img{aspect-ratio:16/7!important;height:auto!important;object-fit:cover}'
-    '.cards .card img{aspect-ratio:16/9;height:auto;object-fit:cover}.sv6 .hv-lead{display:none}.sv6-big div{padding:32px 18px 16px}.sv6-t{padding:12px}}\n')
+    '.cards .card img{aspect-ratio:16/9;height:auto;object-fit:cover}.sv6 .hv-lead{display:none}.sv6-big div{padding:26px 16px 12px}.sv6-t{padding:10px}.sv6-grid{gap:10px!important}}\n')
 
 # ---- images (6 photos retenues, recadrées aux dimensions des modules)
 def g(p):

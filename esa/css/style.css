@@ -356,4 +356,4 @@ h3{font-size:1.35rem}
 
 /* E.S.A. */
 .logo small{font-size:1rem}
-@media(max-width:620px){.hf5-top{display:none}.sv6-big img{aspect-ratio:16/7!important;height:auto!important;object-fit:cover}.cards .card img{aspect-ratio:16/9;height:auto;object-fit:cover}.sv6 .hv-lead{display:none}.sv6-big div{padding:32px 18px 16px}.sv6-t{padding:12px}}
+@media(max-width:620px){.hf5-top{display:none}.sv6-big img{aspect-ratio:16/7!important;height:auto!important;object-fit:cover}.cards .card img{aspect-ratio:16/9;height:auto;object-fit:cover}.sv6 .hv-lead{display:none}.sv6-big div{padding:26px 16px 12px}.sv6-t{padding:10px}.sv6-grid{gap:10px!important}}
