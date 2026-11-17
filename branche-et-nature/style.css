@@ -481,6 +481,9 @@ main>.band{z-index:2}
 .hf5-top{padding:clamp(14px,2vw,18px) 0!important}
 .hf5-b{padding:clamp(22px,3vw,30px) 0!important}
 .hf5-top a,.hf5-b a{padding:0!important;min-height:44px}
+footer.hf5{margin-top:0!important;border-radius:0!important;background:var(--hv-main)!important;padding:0!important;color:#fff}
+.hf5-top a{background:var(--hv-main);color:#fff;border-radius:999px;padding:0 26px!important;min-height:48px;text-decoration:none;font-weight:800}
+.hf5-top a:hover,.hf5-top a:focus-visible{background:var(--hv-ink);color:#fff}
 .hf5-b nav{gap:4px 24px!important;margin:0 0 8px!important}
 .hf5-b .hf-cop{margin:0!important;font-size:1rem}
 @media(max-width:799px){.hf5-top{padding:12px 0!important}.hf5-b{padding:16px 0!important}.hf5-b nav{gap:2px 18px!important;margin:0 0 6px!important}}
