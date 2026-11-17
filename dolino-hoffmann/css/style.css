@@ -432,4 +432,4 @@ p{margin:0}
 h1,h2,h3,h4,b,strong,dt,th{font-weight:400}
 .logo span b{font-weight:400;color:var(--band)}
 .logo span{font-family:'DM Serif Display',Georgia,serif;font-size:1.3rem;line-height:1.1;color:var(--band)}
-@media(max-width:620px){.sv5-row img{aspect-ratio:16/9!important;height:auto!important;object-fit:cover}.sv5-row p{margin:.3rem 0!important}.sv5-more{display:none!important}.hf5-top{padding:10px 0!important}.hf5-top strong{font-size:1rem}.hf5-b{padding:10px 0!important}.hf5-b nav{gap:2px 16px!important;margin:0 0 4px!important}.hf5-b .hf-cop{margin:0!important;font-size:1rem}.tile p{display:none}.tile img{aspect-ratio:16/10;height:auto}}
+@media(max-width:620px){.sv5-row img{aspect-ratio:16/9!important;height:auto!important;object-fit:cover}.sv5-row p{margin:.3rem 0!important}.sv5-more{display:none!important}.hf5-top{padding:8px 0!important}.hf5-top strong{display:none}.hf5-b{padding:8px 0!important}.hf5-b nav{gap:2px 16px!important;margin:0 0 4px!important}.hf5-b .hf-cop{margin:0!important;font-size:1rem}.tile p{display:none}.tile img{aspect-ratio:16/10;height:auto}}
