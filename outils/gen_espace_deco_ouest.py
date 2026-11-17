@@ -82,7 +82,7 @@ FOOT=sub(rd('F6'),[("<strong>Nom de l'entreprise</strong><p>Une phrase de prése
  ('<a href="prestations.html">Prestations</a><a href="a-propos.html">À propos</a>','<a href="services.html">Prestations</a>'),
  ('href="tel:+33000000000">00 00 00 00 00','href="tel:%s">%s'%(TEL,TELT)),
  ('mailto:contact@exemple.fr">contact@exemple.fr','mailto:%s">%s'%(MAIL,MAIL)),
- ('<p>Adresse de la fiche</p>','<p>Buc (Yvelines)</p>'),
+ ('<p>Adresse de la fiche</p>','<p>Chemin des Villaroy aux Loges, 78530 Buc</p>'),
  ("© Nom de l'entreprise · Maquette de démonstration","© Espace Déco Ouest · Maquette de démonstration")])
 def tail(extra=''):
     return '</main>\n'+FOOT+'\n<div class="toast" id="toast" role="status" aria-live="polite"></div>\n<script src="script.js"></script>\n'+extra+'</body>\n</html>\n'
@@ -93,7 +93,7 @@ h=sub(rd('H9'),[('Paysagiste à Commune (00)','Aménagement paysager à Buc (78)
  ('alt="Texte alternatif exact"','alt="Jardin engazonné avec un muret de pierre, un massif fleuri, une allée en dalles et une tondeuse robot, devant une maison" width="1400" height="764"'),
  ('width="1400" height="900" alt','alt'),
  ('href="tel:+33000000000">Appeler le 00 00 00 00 00','href="tel:%s">Appeler le %s'%(TEL,TELT)),('prestations.html','services.html'),
- ("<li><strong>20 ans</strong> d'expérience</li><li><strong>Devis</strong> gratuit</li>","<li><strong>Buc</strong> (78)</li><li>SIREN <strong>832 480 578</strong></li>")])
+ ("<li><strong>20 ans</strong> d'expérience</li><li><strong>Devis</strong> gratuit</li>","<li><strong>Depuis 2017</strong></li><li><strong>10 à 19</strong> salariés</li>")])
 h=h.replace('width="1400" height="764" width="1400" height="900"','width="1400" height="764"')
 v=rd('V6')
 v=sub(v,[('Titre de la section','Du projet au jardin terminé'),('Une phrase d\'introduction.','Cinq domaines pour aménager et entretenir votre extérieur.'),
@@ -105,10 +105,10 @@ v=sub(v,[('Titre de la section','Du projet au jardin terminé'),('Une phrase d\'
  ('<h3>Prestation 5</h3><p>Deux phrases concrètes.</p><a href="prestations.html#p5">','<h3>Entretien du jardin</h3><p>Tonte et suivi régulier pour garder pelouse et massifs en forme.</p><a href="services.html#entretenir">')])
 a=sub(rd('A7'),[('alt="Texte alternatif exact"','alt="Jardinière plantant dans un massif au bord d\'une pelouse, devant une maison contemporaine"'),
  ('Titre de la section','Une entreprise de paysage à Buc'),
- ('Un paragraphe concret et vérifié sur l\'entreprise.',"Espace Déco Ouest, dirigée par Gérard Poupenay, exerce dans l'aménagement paysager à Buc, dans les Yvelines."),
+ ('Un paragraphe concret et vérifié sur l\'entreprise.',"Espace Déco Ouest, SARL dirigée par Gérard Poupenay, exerce depuis 2017 dans l'aménagement paysager à Buc."),
  ('Un second paragraphe.',"Pour un projet de jardin ou d'extérieur, vous échangez directement avec l'entreprise par téléphone ou par e-mail."),
- ('<strong>Atout 1</strong> : une phrase.','<strong>Basée à Buc</strong> : Yvelines (78).'),('<strong>Atout 2</strong> : une phrase.','<strong>Contact direct</strong> : téléphone ou e-mail.'),
- ('<strong>Atout 3</strong> : une phrase.','<strong>Entreprise immatriculée</strong> : SIREN 832 480 578.'),('Prénom Nom, dirigeant','Gérard Poupenay, dirigeant')])
+ ('<strong>Atout 1</strong> : une phrase.','<strong>Créée en 2017</strong> : SARL basée à Buc.'),('<strong>Atout 2</strong> : une phrase.','<strong>Équipe</strong> : 10 à 19 salariés en 2024.'),
+ ('<strong>Atout 3</strong> : une phrase.','<strong>Contact direct</strong> : téléphone ou e-mail.'),('Prénom Nom, dirigeant','Gérard Poupenay, dirigeant')])
 c=sub(rd('C3'),[('Une phrase d\'invitation à demander un devis.',"Décrivez votre projet à Espace Déco Ouest : l'entreprise vous répond par téléphone ou par e-mail."),
  ('href="tel:+33000000000">Appeler le 00 00 00 00 00','href="tel:%s">Appeler le %s'%(TEL,TELT))])
 open(D+'/index.html','w',encoding='utf8').write(head('Espace Déco Ouest, aménagement paysager à Buc (78) | Jardins et extérieurs','Espace Déco Ouest, entreprise d\'aménagement paysager à Buc (78) : conception de jardin, plantations, terrasses, murets et entretien. Contactez-nous par téléphone ou e-mail.')+header('index.html')+h+'\n'+v+'\n'+a+'\n'+c+'\n'+tail())
@@ -191,7 +191,7 @@ k=sub(rd('K1'),[('Nom de l\'entreprise" data-sms="+33000000000" data-tel="+33000
  ('Une phrase d\'introduction.','Décrivez votre projet : vous choisissez ensuite comment envoyer votre demande à Espace Déco Ouest.'),
  ('<option>Besoin 1</option><option>Besoin 2</option><option>Besoin 3</option>','<option>Conception de jardin</option><option>Plantations et massifs</option><option>Terrasse ou allée</option><option>Muret ou maçonnerie</option><option>Entretien du jardin</option>'),
  ('<li><span>Téléphone</span><a href="tel:+33000000000">00 00 00 00 00</a></li>',f'<li><span>Téléphone</span><a href="tel:{TEL}">{TELT}</a><a href="tel:{TEL2}">{TEL2T}</a></li>'),
- ('mailto:contact@exemple.fr">contact@exemple.fr','mailto:%s">%s'%(MAIL,MAIL)),('<p>Adresse de la fiche</p>','<p>Buc (Yvelines)</p>')])
+ ('mailto:contact@exemple.fr">contact@exemple.fr','mailto:%s">%s'%(MAIL,MAIL)),('<p>Adresse de la fiche</p>','<p>Chemin des Villaroy aux Loges, 78530 Buc</p>')])
 C=f'''  <section class="phead compact bg-palm" aria-labelledby="t-h">
     <div class="wrap g2">
       <div>
