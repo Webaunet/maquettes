@@ -209,7 +209,12 @@ open(D+'style.css','a',encoding='utf8').write("""
 /* harmonisation des sections : mêmes espaces et hauteurs sur toutes les pages */
 .hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:clamp(40px,6vw,72px)!important;min-height:0!important}
 .sc3{padding-block:clamp(48px,7vw,80px)!important}
-.hf5-b{padding:clamp(18px,3vw,28px) 0 14px!important}
+.hf5-top{padding:clamp(14px,2vw,18px) 0!important}
+.hf5-b{padding:clamp(22px,3vw,30px) 0!important}
+.hf5-top a,.hf5-b a{padding:0!important;min-height:44px}
+.hf5-b nav{gap:4px 24px!important;margin:0 0 8px!important}
+.hf5-b .hf-cop{margin:0!important;font-size:1rem}
+@media(max-width:799px){.hf5-top{padding:14px 0!important}.hf5-b{padding:22px 0!important}.hf5-b nav{gap:4px 20px!important}}
 .sa5-c,.sm4-c{min-height:0}
 @media(max-width:620px){.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:40px!important}}
 """)
