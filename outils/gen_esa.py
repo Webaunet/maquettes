@@ -73,7 +73,7 @@ def fitw(src, maxw, out):
     return im.size
 
 crop(ALL, (800, 1000), 0.5, 'hero.jpg')
-crop(CRE, (900, 900), 0.4, 'p1.jpg')
+crop(CRE, (1000, 1000), 0.4, 'p1.jpg')
 crop(TER, (800, 1000), 0.5, 'a1.jpg')
 crop(PLA, (600, 600), 0.5, 'a2.jpg')
 SZ = {k: fitw(src, 1000, k + '.jpg') for k, src in
@@ -137,7 +137,7 @@ H5 = ('<section class="hv hv5" aria-labelledby="hv-t"><div class="hv-wrap"><p cl
 V6 = ('<section class="sv sv6" aria-labelledby="sv-t"><div class="hv-wrap"><p class="hv-kick">Nos prestations</p>'
       '<h2 id="sv-t">Création, terrasses et entretien de vos jardins</h2>'
       '<p class="hv-lead">Des travaux adaptés à votre terrain, de la conception à l’entretien régulier.</p>'
-      '<div class="sv6-grid"><div class="sv6-big"><img src="images/p1.jpg" width="900" height="900" alt="Jardin en cours de création avec pelouse et massifs (image d’illustration)">'
+      '<div class="sv6-grid"><div class="sv6-big"><img src="images/p1.jpg" width="1000" height="1000" alt="Jardin en cours de création avec pelouse et massifs (image d’illustration)">'
       '<div><h3>Création d’espaces verts</h3><p>Conception et aménagement de votre jardin, avec plantations adaptées à votre terrain.</p>'
       '<a href="prestations.html#p1">En savoir plus →</a></div></div>'
       '<div class="sv6-t sv6-t1"><h3>Terrasses en bois</h3><p>Pose de terrasses pour prolonger votre séjour au jardin.</p><a href="prestations.html#p2">En savoir plus →</a></div>'
@@ -248,6 +248,12 @@ page('contact.html', 'Contact · E.S.A. à Montchauvet (78)',
 
 print('pages:', sorted(f for f in os.listdir(D) if f.endswith('.html')))
 print('images:', sorted((f, os.path.getsize(D + '/images/' + f) // 1024) for f in os.listdir(D + '/images')))
+
+s2 = open(cp, encoding='utf8').read()
+s2, n8 = re.subn(r'font:800 ', 'font:700 ', s2)
+s2 = s2.replace('font-weight:800', 'font-weight:700')
+open(cp, 'w', encoding='utf8').write(s2)
+print('graisses 800 ramenées à 700 :', n8)
 
 open(D + '/README.md', 'w', encoding='utf8').write(
     '# E.S.A. (Montchauvet, 78)\n\nMaquette de site vitrine (démonstration, non publiée auprès du client).\n\n'
