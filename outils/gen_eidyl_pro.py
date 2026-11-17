@@ -39,6 +39,9 @@ r = subprocess.run(['python3', '-I', MODS + 'mod.py', D, 'H3', 'V7', 'A1', 'C3',
 assert r.returncode == 0, r.stderr
 s = open(cp, encoding='utf8').read()
 s, n = re.subn(r'font-weight:\s*(?:5|6|8)00', 'font-weight:700', s)
+s = s.replace('font:500 ', 'font:400 ')
+s, n = re.subn(r'font:(?:6|8)00 ', 'font:700 ', s)
+print('graisses modules', n)
 s += ('\n/* EIDYL PRO */\n.kicker{color:var(--vert)}.sec-vert .kicker{color:var(--creme)}.logo small{color:var(--texte)}'
       '.hero em{color:var(--vert)}.hero.ch{min-height:0}\n'
       '.sa1-pic{max-width:628px;margin-inline:auto}.sc3-bg img{left:auto;width:min(100%,1408px)}\n'
