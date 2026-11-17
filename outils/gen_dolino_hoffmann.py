@@ -50,7 +50,7 @@ r=subprocess.run(['python3','-I',MOD+'mod.py',D,'H3','V5','A4','M2','C7','F5','K
 s=open(p,encoding='utf8').read()
 # police à graisse unique : aucun faux gras
 s,n=re.subn(r'font-weight:\s*(?:[6-9]00|bold|bolder)','font-weight:400',s);print('gras corrigés',n)
-s+='\n/* maquette */\nh1,h2,h3,h4,b,strong,dt,th{font-weight:400}\n.logo span b{font-weight:400;color:var(--band)}\n.logo span{font-family:\'DM Serif Display\',Georgia,serif;font-size:1.3rem;line-height:1.1;color:var(--band)}\n@media(max-width:620px){.sv5-row img{aspect-ratio:16/9!important;height:auto!important;object-fit:cover}.sv5-row p{margin:.3rem 0!important}.sv5-more{display:none!important}.tile p{display:none}.tile img{aspect-ratio:16/10;height:auto}}\n'
+s+='\n/* maquette */\nh1,h2,h3,h4,b,strong,dt,th{font-weight:400}\n.logo span b{font-weight:400;color:var(--band)}\n.logo span{font-family:\'DM Serif Display\',Georgia,serif;font-size:1.3rem;line-height:1.1;color:var(--band)}\n@media(max-width:620px){.sv5-row img{aspect-ratio:16/9!important;height:auto!important;object-fit:cover}.sv5-row p{margin:.3rem 0!important}.sv5-more{display:none!important}.hf5-top{padding:10px 0!important}.hf5-top strong{font-size:1rem}.hf5-b{padding:10px 0!important}.hf5-b nav{gap:2px 16px!important;margin:0 0 4px!important}.hf5-b .hf-cop{margin:0!important;font-size:1rem}.tile p{display:none}.tile img{aspect-ratio:16/10;height:auto}}\n'
 open(p,'w',encoding='utf8').write(s)
 # ---- JS skeleton : traces
 jp=D+'/js/main.js';j=open(jp,encoding='utf8').read()
