@@ -31,12 +31,12 @@ pic('imgi_4_desherbage.jpg','a2.jpg',700/900,.55)
 pic('conception chantier.jpg','f1.jpg',4/4.6,.72,maxw=600)
 pic('imgi_3_entretien-general.jpg','f2.jpg',4/4.6,.4,maxw=600)
 pic('imgi_5_feuilles.jpg','f3.jpg',4/4.6,.8,maxw=600)
-pic('imgi_1_taille-haies.jpg','r1.jpg',16/11,.5,maxw=800)
-pic('chantier terrasse en bois.jpg','r2.jpg',16/11,.55,maxw=800)
-pic('imgi_7_dechets-verts.jpg','g1.jpg',16/10,.5,maxw=800)
-pic('imgi_10_nettoyage.jpg','g2.jpg',16/10,.5,maxw=800)
-pic('imgi_7_entretien-jardin.jpg','g3.jpg',16/10,.5,maxw=800)
-pic('imgi_4_creation-espace-vert.jpg','r3.jpg',16/11,.6,maxw=800)
+pic('imgi_1_taille-haies.jpg','r1.jpg',16/11,.5)
+pic('chantier terrasse en bois.jpg','r2.jpg',16/11,.55)
+pic('imgi_7_dechets-verts.jpg','g1.jpg',16/10,.5)
+pic('imgi_10_nettoyage.jpg','g2.jpg',16/10,.5)
+pic('imgi_7_entretien-jardin.jpg','g3.jpg',16/10,.5)
+pic('imgi_4_creation-espace-vert.jpg','r3.jpg',16/11,.6)
 # favicon
 fv=Image.new('RGB',(128,128),'#4a2340');d=ImageDraw.Draw(fv)
 try:ft=ImageFont.truetype('DejaVuSerif-Bold.ttf',84)
@@ -57,6 +57,7 @@ open(p,'a',encoding='utf8').write('''
 /* maquette */
 .btn-rope{color:#fff}.btn-rope:hover{background:#3f6a28;color:#fff}.c-rope{color:#fff}
 .story{grid-template-columns:1fr!important;max-width:860px}
+@media(max-width:980px){.row img{max-height:380px;object-fit:cover}}
 .sv,.hv11{min-height:0!important}.sv{padding-block:clamp(48px,6vw,80px)!important}
 @media(max-width:620px){.sv.sv.sv.sv{padding-top:40px!important;padding-bottom:40px!important}.sv6-big img{aspect-ratio:16/10;object-fit:cover;width:100%}.cards3 .card{display:grid;grid-template-columns:auto 1fr;column-gap:1rem;align-items:center;padding:.9rem 1rem}.cards3{gap:.8rem!important}.cards3 .card svg{grid-row:span 2}.cards3 .card h3,.cards3 .card p{margin:0}.gal3 img:nth-child(3){display:none}.gal3 img{aspect-ratio:16/8!important;object-fit:cover}.sv6-t{padding:1rem 1.2rem!important;min-height:0!important}.sv6-t p{display:none!important}.sv6-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.sv6-t h3{font-size:1.1rem!important;overflow-wrap:anywhere}.sv6-big{min-height:210px!important}.sv6-grid{margin-top:20px!important}.sv6-big>div{padding:1rem 1.2rem!important}}
 ''')
