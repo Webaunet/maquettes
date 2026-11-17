@@ -259,8 +259,5 @@ page('contact.html', 'Contact · EF PAYSAGES à Mauchamps (91)',
      'Contactez EF PAYSAGES à Mauchamps (91) : demande de devis en ligne ou appel au ' + TEL + '.',
      'contact.html', CONTACT, extra='<script src="js/k.js" defer></script>\n')
 
-open(D + '/README.md', 'w', encoding='utf8').write(
-    '# EF PAYSAGES (Mauchamps, 91)\n\nMaquette de site vitrine (démonstration, non publiée auprès du client).\n\n'
-    'Pages : index, prestations, contact.\n')
 print('pages:', sorted(f for f in os.listdir(D) if f.endswith('.html')))
 print('images:', sorted(os.listdir(D + '/images')))
