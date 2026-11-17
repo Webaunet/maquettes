@@ -258,7 +258,8 @@ open(cp, 'a', encoding='utf8').write(
     '.sa3{box-shadow:0 130px 0 0 var(--hv-bg2)}.final{box-shadow:0 -40px 0 0 var(--hv-main)}\n'
     '@media(min-width:900px){.sk2 .sk-form{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}'
     '.sk2 .sk-f:nth-child(5),.sk2 .sk-go{grid-column:1/-1}}\n'
-    '@media(max-width:620px){.sv6{padding:30px 0}.sv6-t h3{margin:0 0 4px}.sv6-t p{margin:0 0 2px}.sv6-t a{margin-top:0}}\n'
+    '@media(max-width:620px){.sv6{padding:30px 0}.sv6-t h3{margin:0 0 4px}.sv6-t p{margin:0 0 2px}.sv6-t a{margin-top:0}.sv6-t p{display:none}}\n'
+    '@media(min-width:900px){.hv5 h1{font-size:clamp(2.4rem,5.2vw,4.4rem)}}\n'
     '@media(min-width:1000px){.sk2 .sk-grid{width:min(1100px,100% - 40px);display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}.sk2 .sk-side{order:0}.sk2 .sk-side ul{grid-template-columns:1fr}}\n')
 
 open(D + '/README.md', 'w', encoding='utf8').write(
