@@ -140,9 +140,9 @@ V6 = ('<section class="sv sv6" aria-labelledby="sv-t"><div class="hv-wrap"><p cl
       '<div class="sv6-grid"><div class="sv6-big"><img src="images/p1.jpg" width="1000" height="1000" alt="Jardin en cours de création avec pelouse et massifs (image d’illustration)">'
       '<div><h3>Création d’espaces verts</h3><p>Conception et aménagement de votre jardin, avec plantations adaptées à votre terrain.</p>'
       '<a href="prestations.html#p1">En savoir plus →</a></div></div>'
-      '<div class="sv6-t sv6-t1"><h3>Terrasses en bois</h3><p>Pose de terrasses pour prolonger votre séjour au jardin.</p><a href="prestations.html#p2">En savoir plus →</a></div>'
-      '<div class="sv6-t sv6-t2"><h3>Allées et dallages</h3><p>Pose d’allées et de dallages pour circuler dans votre jardin.</p><a href="prestations.html#p3">En savoir plus →</a></div>'
-      '<div class="sv6-t sv6-t3"><h3>Maçonnerie paysagère</h3><p>Murets, escaliers et ouvrages en pierre pour structurer le jardin.</p><a href="prestations.html#p4">En savoir plus →</a></div>'
+      '<div class="sv6-t sv6-t1"><h3>Terrasses en bois</h3><p>Terrasses posées pour prolonger la maison.</p><a href="prestations.html#p2">En savoir plus →</a></div>'
+      '<div class="sv6-t sv6-t2"><h3>Allées et dallages</h3><p>Allées et dallages pour circuler dans le jardin.</p><a href="prestations.html#p3">En savoir plus →</a></div>'
+      '<div class="sv6-t sv6-t3"><h3>Maçonnerie paysagère</h3><p>Murets, escaliers et ouvrages en pierre.</p><a href="prestations.html#p4">En savoir plus →</a></div>'
       '<div class="sv6-t sv6-t4"><h3>Entretien de jardin</h3><p>Tonte, taille et désherbage pour garder votre jardin net.</p><a href="prestations.html#p5">En savoir plus →</a></div>'
       '</div></div></section>')
 
@@ -254,6 +254,12 @@ s2, n8 = re.subn(r'font:800 ', 'font:700 ', s2)
 s2 = s2.replace('font-weight:800', 'font-weight:700')
 open(cp, 'w', encoding='utf8').write(s2)
 print('graisses 800 ramenées à 700 :', n8)
+open(cp, 'a', encoding='utf8').write(
+    '.sa3{box-shadow:0 130px 0 0 var(--hv-bg2)}.final{box-shadow:0 -40px 0 0 var(--hv-main)}\n'
+    '@media(min-width:900px){.sk2 .sk-form{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}'
+    '.sk2 .sk-f:nth-child(5),.sk2 .sk-go{grid-column:1/-1}}\n'
+    '@media(max-width:620px){.sv6{padding:30px 0}.sv6-t h3{margin:0 0 4px}.sv6-t p{margin:0 0 2px}.sv6-t a{margin-top:0}}\n'
+    '@media(min-width:1000px){.sk2 .sk-grid{width:min(1100px,100% - 40px);display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}.sk2 .sk-side{order:0}.sk2 .sk-side ul{grid-template-columns:1fr}}\n')
 
 open(D + '/README.md', 'w', encoding='utf8').write(
     '# E.S.A. (Montchauvet, 78)\n\nMaquette de site vitrine (démonstration, non publiée auprès du client).\n\n'

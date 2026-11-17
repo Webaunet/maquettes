@@ -357,3 +357,7 @@ h3{font-size:1.35rem}
 /* E.S.A. */
 .logo small{font-size:1rem}
 @media(max-width:620px){.hf5-top{display:none}.sv6-big img{aspect-ratio:16/7!important;height:auto!important;object-fit:cover}.cards .card img{aspect-ratio:16/9;height:auto;object-fit:cover}.sv6 .hv-lead{display:none}.sv6-big div{padding:26px 16px 12px}.sv6-t{padding:10px}.sv6-grid{gap:10px!important}}
+.sa3{box-shadow:0 130px 0 0 var(--hv-bg2)}.final{box-shadow:0 -40px 0 0 var(--hv-main)}
+@media(min-width:900px){.sk2 .sk-form{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}.sk2 .sk-f:nth-child(5),.sk2 .sk-go{grid-column:1/-1}}
+@media(max-width:620px){.sv6{padding:30px 0}.sv6-t h3{margin:0 0 4px}.sv6-t p{margin:0 0 2px}.sv6-t a{margin-top:0}}
+@media(min-width:1000px){.sk2 .sk-grid{width:min(1100px,100% - 40px);display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}.sk2 .sk-side{order:0}.sk2 .sk-side ul{grid-template-columns:1fr}}
