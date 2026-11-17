@@ -214,7 +214,7 @@ open(D+'style.css','a',encoding='utf8').write("""
 .hf5-top a,.hf5-b a{padding:0!important;min-height:44px}
 .hf5-b nav{gap:4px 24px!important;margin:0 0 8px!important}
 .hf5-b .hf-cop{margin:0!important;font-size:1rem}
-@media(max-width:799px){.hf5-top{padding:14px 0!important}.hf5-b{padding:22px 0!important}.hf5-b nav{gap:4px 20px!important}}
+@media(max-width:799px){.hf5-top{padding:12px 0!important}.hf5-b{padding:16px 0!important}.hf5-b nav{gap:2px 18px!important;margin:0 0 6px!important}}
 .sa5-c,.sm4-c{min-height:0}
 @media(max-width:620px){.hv8,.sv3,.sa5,.sm4,.sk,.sv-intro,.sc3{padding-block:40px!important}}
 """)
