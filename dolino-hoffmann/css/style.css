@@ -427,7 +427,7 @@ p{margin:0}
 .sk3 .sk-side ul{margin-top:18px}
 @media(min-width:900px){.sk3 .sk-grid{grid-template-columns:.9fr 1.1fr;gap:0;align-items:stretch}.sk3 .sk-side{border-radius:calc(var(--hv-r) + 6px) 0 0 calc(var(--hv-r) + 6px);padding:48px}.sk3 .sk-card{border-radius:0 calc(var(--hv-r) + 6px) calc(var(--hv-r) + 6px) 0}}
 @media(max-width:899px){.sk3 .sk-side .sk-intro,.sk3 .sk-side .hv-kick{display:none}.sk3 .sk-side h2{font-size:1.6rem;margin:0 0 6px}}
-@media(min-width:800px){.sv5{padding:clamp(40px,5vw,72px) 0}.sv5-row figure{max-height:240px!important}}
+@media(min-width:800px){.sv5{padding:clamp(40px,5vw,72px) 0}.sv5-row figure{max-height:220px!important}}
 
 /* maquette */
 h1,h2,h3,h4,b,strong,dt,th{font-weight:400}
