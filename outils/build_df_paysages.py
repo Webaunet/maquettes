@@ -74,6 +74,15 @@ EXTRA_CSS = """
 .sa3-i2 img{max-width:600px}
 .sc7-ph img{max-width:768px}
 .grid4.g2{grid-template-columns:repeat(2,1fr)}
+.grid4.g2 .svc img{aspect-ratio:5/2}
+.sec.compact .about-media img.main{max-height:300px;object-fit:cover;width:100%}
+@media(max-width:1000px){.land .mosaic{max-width:440px;margin-inline:auto}.sec.compact{padding-block:2rem}.sec+.sec.compact{padding-top:calc(2rem + var(--r)*2)}.sec.compact .about-media img.main{max-height:220px}.grid4.g2 .svc img{aspect-ratio:3/1}}
+.sec.compact{min-height:0;padding-block:clamp(2.5rem,5vw,4rem)}
+.sec+.sec.compact{padding-top:calc(clamp(2.5rem,5vw,4rem) + var(--r)*2)}
+.sa3{background:var(--hv-bg)}
+.sc7{background:var(--hv-bg2)}
+.sc7-card{background:var(--hv-bg)}
+.hf3 .hf-cop{max-width:none;text-align:center}
 @media(max-width:619px){.grid4.g2{grid-template-columns:1fr}}
 """
 MOD_ARGS = ['--bg', '#f3f5f2', '--bg2', '#e1e8e1', '--ink', '#1c262b', '--mu', '#4b5a60',
@@ -194,7 +203,7 @@ def footer():
 def h12():
     return ('<section class="hv hv12 hv-dark" aria-labelledby="hv-t"><div class="hv12-bg">'
             '<img src="images/hero.jpg" width="1228" height="768" alt="' + ALT['hero.jpg'] + '"></div>'
-            '<div class="hv-wrap hv12-in"><div class="hv12-txt"><p class="hv-kick">Paysagiste · D&amp;F Paysages</p>'
+            '<div class="hv-wrap hv12-in"><div class="hv12-txt"><p class="hv-kick">D&amp;F Paysages</p>'
             '<h1 id="hv-t">Aménagement et entretien de vos espaces verts<em>Brunoy (91)</em></h1>'
             '<svg class="hv12-line" viewBox="0 0 480 14" aria-hidden="true" focusable="false"><path d="M2 9C90 2 200 12 300 6S440 7 478 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>'
             '<div class="hv12-cta"><a class="hv12-pill" href="prestations.html">Nos prestations<span aria-hidden="true">↗</span></a>'
@@ -259,8 +268,8 @@ def k6():
             '<option>Entretien et tonte</option><option>Autre demande</option></select><p class="sk-err" id="k-besoin-e" role="alert"></p></div>'
             '<div class="sk-f"><label for="k-msg">Message (facultatif)</label><textarea id="k-msg" name="msg" rows="3"></textarea><p class="sk-err" id="k-msg-e" role="alert"></p></div>'
             '<button class="hv-btn hv-btn-p sk-go" type="submit">Demander un devis</button></form>' + SKDONE +
-            '<aside class="sk-side"><ul><li><span>Téléphone</span><a href="tel:' + TEL + '">' + TEL_FR + '</a></li>'
-            '<li><span>Siège</span><p>Brunoy (91)</p></li></ul></aside></div></div></section>\n')
+            '</div><aside class="sk-side"><ul><li><span>Téléphone</span><a href="tel:' + TEL + '">' + TEL_FR + '</a></li>'
+            '<li><span>Siège</span><p>Brunoy (91)</p></li></ul></aside></div></section>\n')
 
 
 def page(title, desc, current, body, scripts):
@@ -301,10 +310,12 @@ def page_prestations():
                     '<div><h3>' + title + '</h3><p>' + text + '</p></div></article>\n')
         return out
     grid = ('<section class="sec s-cream" aria-labelledby="h-serv"><div class="wrap">'
-            '<div class="head"><span class="eyebrow">Domaines d’intervention</span><h2 id="h-serv">Quatre domaines d’intervention</h2>'
-            '<p>Choisissez le domaine qui correspond à votre projet, ou décrivez-nous votre besoin.</p></div>'
+            '<div class="head"><span class="eyebrow">Domaines d’intervention</span><h2 id="h-serv">Création et aménagement</h2>'
+            '<p>Du projet de jardin à la terrasse ou à l’allée, selon votre besoin.</p></div>'
             '<div class="grid4 g2">' + cards_of(items[:2]) + '</div></div></section>\n'
-            '<section class="sec s-sage" aria-label="Autres domaines d’intervention"><div class="wrap">'
+            '<section class="sec s-sage" aria-labelledby="h-serv2"><div class="wrap">'
+            '<div class="head"><span class="eyebrow">Domaines d’intervention</span><h2 id="h-serv2">Entretien et ouvrages en pierre</h2>'
+            '<p>Tonte, entretien du jardin et maçonnerie paysagère.</p></div>'
             '<div class="grid4 g2">' + cards_of(items[2:]) + '</div></div></section>\n')
     cta = ('<section class="sec dark rings cta" aria-labelledby="h-cta"><div class="wrap"><div class="ctabox">'
            '<span class="eyebrow">Demande de devis</span><h2 id="h-cta">Un jardin, une terrasse, un projet&nbsp;?</h2>'
@@ -321,14 +332,14 @@ def page_apropos():
              '<span class="eyebrow">L’entreprise · Brunoy (91)</span><h1 id="h1">Une entreprise d’aménagement paysager à Brunoy</h1>'
              '<p>D&amp;F Paysages exerce dans le secteur des services d’aménagement paysager, depuis Brunoy, en Essonne.</p>'
              '</div></div></section>\n')
-    about = ('<section class="sec dark rings" aria-labelledby="h-about"><div class="wrap about">'
+    about = ('<section class="sec compact dark rings" aria-labelledby="h-about"><div class="wrap about">'
              '<div class="about-media"><img class="main" src="images/about.jpg" width="800" height="436" alt="' + ALT['about.jpg'] + '" loading="lazy"></div>'
              '<div class="about-card"><span class="eyebrow">Repères</span><h2 id="h-about">Les informations de référence</h2>'
              '<ul><li>' + SVG_CHECK + 'Secteur d’activité : services d’aménagement paysager</li>'
              '<li>' + SVG_CHECK + 'Siège : Brunoy (Essonne, 91)</li>'
              '<li>' + SVG_CHECK + 'Dirigeant : Victor Jorge</li></ul>'
              '<div class="actions"><a class="btn btn-rope" href="contact.html">Nous contacter</a></div></div></div></section>\n')
-    nxt = ('<section class="sec s-sage" aria-labelledby="h-next"><div class="wrap"><div class="head">'
+    nxt = ('<section class="sec compact s-sage" aria-labelledby="h-next"><div class="wrap"><div class="head">'
            '<span class="eyebrow">Suite</span><h2 id="h-next">Découvrir les prestations</h2>'
            '<p>Création, aménagement et entretien d’espaces verts.</p></div>'
            '<div class="actions"><a class="btn btn-green" href="prestations.html">Voir les prestations</a></div></div></section>\n')
@@ -338,7 +349,7 @@ def page_apropos():
 
 
 def page_contact():
-    band = ('<section class="sec s-cream" style="padding-top:clamp(2.5rem,6vw,4rem);min-height:0" aria-labelledby="h1">'
+    band = ('<section class="sec s-cream" style="padding-top:clamp(2.5rem,6vw,4rem);padding-bottom:clamp(1.5rem,3vw,2rem);min-height:0" aria-labelledby="h1">'
             '<div class="wrap"><div class="head"><span class="eyebrow">Contact · Brunoy (91)</span>'
             '<h1 id="h1">Parlons de votre projet</h1>'
             '<p>Préparez votre demande dans le formulaire ci-dessous, puis envoyez-la par SMS ou appelez l’entreprise.</p>'

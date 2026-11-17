@@ -270,6 +270,15 @@ a{color:inherit}
 .sa3-i2 img{max-width:600px}
 .sc7-ph img{max-width:768px}
 .grid4.g2{grid-template-columns:repeat(2,1fr)}
+.grid4.g2 .svc img{aspect-ratio:5/2}
+.sec.compact .about-media img.main{max-height:300px;object-fit:cover;width:100%}
+@media(max-width:1000px){.land .mosaic{max-width:440px;margin-inline:auto}.sec.compact{padding-block:2rem}.sec+.sec.compact{padding-top:calc(2rem + var(--r)*2)}.sec.compact .about-media img.main{max-height:220px}.grid4.g2 .svc img{aspect-ratio:3/1}}
+.sec.compact{min-height:0;padding-block:clamp(2.5rem,5vw,4rem)}
+.sec+.sec.compact{padding-top:calc(clamp(2.5rem,5vw,4rem) + var(--r)*2)}
+.sa3{background:var(--hv-bg)}
+.sc7{background:var(--hv-bg2)}
+.sc7-card{background:var(--hv-bg)}
+.hf3 .hf-cop{max-width:none;text-align:center}
 @media(max-width:619px){.grid4.g2{grid-template-columns:1fr}}
 
 /* modules */
