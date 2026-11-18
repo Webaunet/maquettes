@@ -1,6 +1,6 @@
 /* Concept : bandes de couleur aux bords courbes qui se recouvrent, comme des planches de jardin. Vert du logo (camionnette verte et blanche), citron vert en accent. */
 :root{
-  --forest:#7a3b22; --forest-deep:#2b211b; --leaf:#3f6b4f; --lime:#ecdcc6; --mist:#ecdcc6; --paper:#f7efe4; --ink:#2b211b; --ink-soft:#5f4f44; --bark:#5f4f44;
+  --forest:#7a3b22; --forest-deep:#2b211b; --leaf:#3f6b4f; --lime:#3f6b4f; --mist:#ecdcc6; --paper:#f7efe4; --ink:#2b211b; --ink-soft:#5f4f44; --bark:#5f4f44;
   --display:'Playfair Display',"Trebuchet MS",system-ui,sans-serif; --body:'Lato',"Segoe UI",system-ui,sans-serif;
   --r:44px; --header:72px; color-scheme:light;
 }
