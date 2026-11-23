@@ -9,7 +9,7 @@
   var y=document.getElementById('an');if(y)y.textContent=new Date().getFullYear();
 })();
 (function(){
-  var f=document.getElementById('devis');if(!f)return;
+  var f=document.getElementById('devis');if(!f||f.tagName!=='FORM')return;
   var recap=document.getElementById('recap'),txt=document.getElementById('recap-text'),ok=document.getElementById('r-ok');
   var TEL=/^(?:(?:\+|00)33|0)[1-9](?:[\s.-]?\d{2}){4}$/;
   function err(id,msg){var i=document.getElementById(id),e=document.getElementById('err-'+id);if(!e)return;e.textContent=msg||'';if(msg){i.setAttribute('aria-invalid','true')}else{i.removeAttribute('aria-invalid')}}
