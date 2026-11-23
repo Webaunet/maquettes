@@ -1,5 +1,5 @@
 :root{
-  --ink:#2a2418; --moss:#4d4a1f; --leaf:#8a5a2b; --cream:#f8f3ea; --sage:#e9e0cc; --apricot:#8a5a2b; --apricot-d:#8a5a2b; --white:#fff;
+  --ink:#2a2418; --moss:#4d4a1f; --leaf:#8a5a2b; --cream:#f8f3ea; --sage:#e9e0cc; --apricot:#e9e0cc; --apricot-d:#e9e0cc; --white:#fff;
   --muted:#5b5240; --r:44px; --card:24px; --shadow:0 14px 34px rgba(29,43,34,.14);
   --f-head:'Playfair Display',"Trebuchet MS",system-ui,sans-serif; --f-body:'Lato',"Segoe UI",system-ui,sans-serif; --hh:72px;
 }
